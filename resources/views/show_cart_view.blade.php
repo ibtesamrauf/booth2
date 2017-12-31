@@ -7,10 +7,10 @@
 	// vv(Cart::instance('shopping')->content());
 	if(!Cart::instance('shopping')->content()->isEmpty()){
 		?>
-		<form action="http://www.sandbox.paypal.com/cgi-bin/webscr" method="POST">
+		<!-- <form action="http://www.sandbox.paypal.com/cgi-bin/webscr" method="POST">
 	        <input type="hidden" name="cmd" value="_cart">
 	    	<input type="hidden" name="upload" value="1">
-	        <input type="hidden" name="business" value="irkibby-facilitator@gmail.com">
+	        <input type="hidden" name="business" value="irkibby-facilitator@gmail.com"> -->
 	        <!-- <div> -->
 		<?php
 	 	foreach(Cart::instance('shopping')->content() as $row){ ?>
@@ -24,7 +24,6 @@
 					<!-- </td> -->
 					<!-- <td> -->
 	                    {!! Form::open(['url' => ['/show_cart_view'], 'files' => true]) !!}
-	                    <form action="/show_cart_view" files="true"></form>
 							<input type="hidden" name="cart_product_id" value="<?php echo $row->rowId; ?>"></td>
 
 							<input type="number" name="cart_product_quantity" value="<?php echo $row->qty; ?>"></td>
@@ -66,8 +65,8 @@
 		echo "Total: ".Cart::instance('shopping')->total();
 		?>
 		<br><br>
-        <input type="submit" class="btn btn-success" value="Paypal">
-    </form>
+     <!--    <input type="submit" class="btn btn-success" value="Paypal">
+    </form> -->
     <?php
 	}else{
 		?>
