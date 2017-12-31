@@ -35,3 +35,5 @@ Route::get('/add_to_cart/{add_to_cart_id}/{add_to_cart_product_name}/{add_to_car
 //     // return view('welcome');
 // });
 
+Route::resource('network', 'ProductController');
+

@@ -56,7 +56,7 @@ class HomeController extends Controller
             $image_name = $file->getClientOriginalName();
         }
         
-        Products::insert([
+        Products::create([
             // 'user_id'       => \Auth::user()->id, 
             'title'         => $request->title,
             'description'   => $request->description,
