@@ -21,6 +21,8 @@ class Show_cart_viewController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+        ini_set('upload_max_filesize', '50M');
+        ini_set('post_max_size', '50M');
     }
 
     public function index(Request $request)
