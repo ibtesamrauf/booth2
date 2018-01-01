@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+// Route::get('/', 'WelcomeController@index');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/paypal', 'HomeController@paypal');
 
