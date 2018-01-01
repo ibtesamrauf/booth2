@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 // use \Input as Input;
 use Illuminate\Support\Facades\Input;
 use App\Products;
+use App\Hotel;
 use Cart;
 // use Session;
 
@@ -34,6 +35,12 @@ class HomeController extends Controller
     {
         $products = Products::orderBy('id','DESC')->paginate(15);
         return view('home' , compact('products'));
+    }
+    
+    public function hotel()
+    {
+        $hotel = Hotel::orderBy('id','DESC')->paginate(15);
+        return view('hotel' , compact('hotel'));
     }
 
     public function add_product_view()

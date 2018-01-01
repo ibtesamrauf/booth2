@@ -12,9 +12,9 @@
       </h1>
 
       <div class="row">
-        @foreach ($products as $user)
+        @foreach ($hotel as $user)
             <div class="col-lg-2 col-sm-2 portfolio-item">
-              <a href="/add_to_cart/{{$products[0]->id.$products[0]->title}}/{{$products[0]->title}}/{{$products[0]->price}}">
+              <a href="/add_to_cart/{{$hotel[0]->id.$hotel[0]->title}}/{{$hotel[0]->title}}/{{$hotel[0]->price}}">
                 <div class="card h-100" style="overflow: hidden;background-color: #00b04e;">
                   <a href="/show_product_view/{{ $user->id }}">
                     <!-- <img class="card-img-top" style="height: 140px;" src="{{ asset('uploads/'.$user->image) }}" alt=""> -->
@@ -26,7 +26,7 @@
                     <!-- <p class="card-text"><?php echo addslashes(substr($user->description, 0, 100))." ..." ?></p> -->
                     <p>
                       <span>${{ $user->price }}</span>
-                      <!-- <a class="btn btn-primary btn-lg" style=" font-size: 1.0rem; " href="/add_to_cart/{{$products[0]->id.$products[0]->title}}/{{$products[0]->title}}/{{$products[0]->price}}">
+                      <!-- <a class="btn btn-primary btn-lg" style=" font-size: 1.0rem; " href="/add_to_cart/{{$hotel[0]->id.$hotel[0]->title}}/{{$hotel[0]->title}}/{{$hotel[0]->price}}">
                         +
                       </a> -->
                     </p>
@@ -40,7 +40,7 @@
       </div>
       <!-- /.row -->
       <div class="row">
-          {{$products->render()}}
+          {{$hotel->render()}}
       </div>
       <!-- Pagination -->
 @endsection

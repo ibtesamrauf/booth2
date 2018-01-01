@@ -12,7 +12,7 @@
 */
 
 // Route::get('/', 'WelcomeController@index');
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@hotel');
 
 Route::get('/paypal', 'HomeController@paypal');
 
