@@ -7,7 +7,7 @@
             </div>
         @endif
        <!-- Page Heading -->
-      <h1 class="my-4">Product
+      <h1 class="my-4">Booth
         <small>List</small>
       </h1>
 

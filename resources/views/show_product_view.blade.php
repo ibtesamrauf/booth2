@@ -7,8 +7,8 @@
         </div>
     @endif
     <!-- Page Heading -->
-    <h1 class="my-4">Product
-      <small>List</small>
+    <h1 class="my-4">Booth
+      <small>Desscription</small>
     </h1>
 
     <!-- Portfolio Item Row -->
