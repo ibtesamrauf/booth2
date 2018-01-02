@@ -23,7 +23,7 @@
 
 </head>
 <body>
-    @include('layouts.navbar');
+    @include('layouts.navbar')
 
     <!-- Page Content -->
     <div class="container">

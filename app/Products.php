@@ -29,9 +29,9 @@ class Products extends Model
  
     protected $fillable = ['hotel_id', 'title', 'description', 'price', 'image'];
     
-    // public function ImageDesc(){
-    //     return $this->hasMany('App\Image_order');
-    // }
+    public function one_hotel(){
+        return $this->hasOne('App\Hotel' , 'id', 'hotel_id');
+    }
     
     // public function HotspotInfo(){
     //     return $this->hasMany('App\Hot_spot_info');

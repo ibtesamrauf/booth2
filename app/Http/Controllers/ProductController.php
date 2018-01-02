@@ -6,8 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Products;
-
-use App\Application;
+use App\Hotel;
 use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +30,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $perPage = 15;    
-        $device = Products::orderBy('id','DESC')->paginate($perPage);
+        $device = Products::with('one_hotel')->orderBy('id','DESC')->paginate($perPage);
       
         return view('Product.index', compact('device'));
     }
@@ -43,7 +42,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('Product.create');
+        $hotel = Hotel::pluck('name','id');
+        // vv($hotel);
+        return view('Product.create', compact('hotel'));
     }
 
     /**
@@ -60,18 +61,20 @@ class ProductController extends Controller
             'title'         => 'required',
             'description'   => 'required',
             'price'         => 'required',
+            'select_hotel'  => 'required',
         ]);
 
-        if(Input::hasFile('file')){
-            echo 'Uploaded';
-            $file = Input::file('file');
-            $file->move('uploads', $file->getClientOriginalName());
-            echo '';
-            $image_name = $file->getClientOriginalName();
-        }
+        // if(Input::hasFile('file')){
+        //     echo 'Uploaded';
+        //     $file = Input::file('file');
+        //     $file->move('uploads', $file->getClientOriginalName());
+        //     echo '';
+        //     $image_name = $file->getClientOriginalName();
+        // }
 
         Products::create([
-            // 'user_id'       => \Auth::user()->id, 
+            // 'user_id'       => \Auth::user()->id,
+            'hotel_id'      => $request->select_hotel,
             'title'         => $request->title,
             'description'   => $request->description,
             'price'         => $request->price,
@@ -90,7 +93,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $user = Products::findOrFail($id);
+        $user = Products::with('one_hotel')->findOrFail($id);
         return view('Product.show', compact('user'));
     }
 
@@ -103,8 +106,9 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $user = Products::findOrFail($id);
-        return view('Product.edit', compact('user'));
+        $hotel = Hotel::pluck('name','id');
+        $user = Products::with('one_hotel')->findOrFail($id);
+        return view('Product.edit', compact('user' , 'hotel'));
     }
 
     /**
@@ -121,9 +125,12 @@ class ProductController extends Controller
             'title'         => 'required',
             'description'   => 'required',
             'price'         => 'required',
+            'select_hotel'  => 'required',
         ]);
         $requestData = $request->all();
-    
+        unset($requestData['select_hotel']);
+        $requestData['hotel_id'] = $request->select_hotel;
+
         $user = Products::findOrFail($id);
         $user->update($requestData);
 

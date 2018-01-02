@@ -1,24 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script> -->
 <script>
 // tinymce.init({ selector:'textarea' });
 
-tinymce.init({
-    selector: 'textarea',
-    height: 300,
-    theme: 'modern',
-    plugins: [
-      'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-      'searchreplace wordcount visualblocks visualchars code fullscreen',
-      'insertdatetime media nonbreaking save table contextmenu directionality',
-      'emoticons template paste textcolor colorpicker textpattern imagetools'
-    ],
-    toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
-    toolbar2: 'print preview media | forecolor backcolor emoticons',
-    image_advtab: true
-});
+// tinymce.init({
+//     selector: 'textarea',
+//     height: 300,
+//     theme: 'modern',
+//     plugins: [
+//       'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+//       'searchreplace wordcount visualblocks visualchars code fullscreen',
+//       'insertdatetime media nonbreaking save table contextmenu directionality',
+//       'emoticons template paste textcolor colorpicker textpattern imagetools'
+//     ],
+//     toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+//     toolbar2: 'print preview media | forecolor backcolor emoticons',
+//     image_advtab: true
+// });
 
 </script>
     <div class="container">
@@ -26,7 +26,7 @@ tinymce.init({
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Products</div>
+                    <div class="panel-heading">Booth</div>
                     <div class="panel-body">
                         <a href="{{ url('/network') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />

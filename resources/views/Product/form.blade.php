@@ -6,6 +6,14 @@
     </div>
 </div>
 
+<div class="form-group {{ $errors->has('select_hotel') ? 'has-error' : ''}}">
+    {!! Form::label('select_hotel', 'Select Hotel', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+        {{ Form::select('select_hotel', $hotel , $user->hotel_id , ['class' => 'form-control']) }}
+        {!! $errors->first('select_hotel', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
 <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
     {!! Form::label('description', 'Description', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">

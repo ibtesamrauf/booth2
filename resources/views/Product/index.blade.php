@@ -6,7 +6,7 @@
             
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Products</div>
+                    <div class="panel-heading">Booth</div>
                     @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
@@ -35,9 +35,10 @@
                                 <thead>
                                     <tr>
                                         <th>Title</th>
+                                        <th>Belongs to</th>
                                         <th>Description</th>
                                         <th>price</th>
-                                        <th>Image</th>
+                                        <!-- <th>Image</th> -->
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -45,9 +46,11 @@
                                 @foreach($device as $item)
                                     <tr>
                                         <td>{{ $item->title }}</td>
+                                        <td>{{ $item->one_hotel->name }}</td>
                                         <td><?php echo addslashes($item->description) ?></td>
                                         <td>{{ $item->price }}</td>
-                                        <td>{{ $item->image }}</td>
+                                        <!-- <td>{{ $item->image }}</td> -->
+
                                         <td>
                                             <a href="{{ url('/network/' . $item->id) }}" title="View User"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/network/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

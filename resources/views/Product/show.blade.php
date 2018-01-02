@@ -6,7 +6,7 @@
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Products</div>
+                    <div class="panel-heading">Booth</div>
                     <div class="panel-body">
 
                         <a href="{{ url('/network') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -34,6 +34,10 @@
                                         <td>{{ $user->title }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Belongs to</th>
+                                        <td>{{ $user->one_hotel->name }}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Description</th>
                                         <td><?php echo addslashes($user->description) ?></td>
                                     </tr>
@@ -41,10 +45,10 @@
                                         <th>Price</th>
                                         <td>{{ $user->price }}</td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <th>Image</th>
                                         <td><img class="img-thumbnail" src="/uploads/{{ $user->image }}"></td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

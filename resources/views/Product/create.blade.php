@@ -26,7 +26,7 @@ tinymce.init({
 
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Create New Product</div>
+                    <div class="panel-heading">Create New Booth</div>
                     <div class="panel-body">
                         <a href="{{ url('/network') }}" title="Back"><button class="btn btn-warning btn-xs"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
                         <br />
@@ -41,12 +41,20 @@ tinymce.init({
                         @endif
 
                         {!! Form::open(['url' => '/network', 'class' => 'form-horizontal', 'files' => true]) !!}
-
                         <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
                             {!! Form::label('title', 'Title', ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
                                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
                                 {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
+                       
+                        <div class="form-group {{ $errors->has('select_hotel') ? 'has-error' : ''}}">
+                            {!! Form::label('select_hotel', 'Select Hotel', ['class' => 'col-md-4 control-label']) !!}
+                            <div class="col-md-6">
+                                {{ Form::select('select_hotel', $hotel , null, ['class' => 'form-control']) }}
+                                <!-- {!! Form::text('select_hotel', null, ['class' => 'form-control']) !!} -->
+                                {!! $errors->first('select_hotel', '<p class="help-block">:message</p>') !!}
                             </div>
                         </div>
 
@@ -65,7 +73,7 @@ tinymce.init({
                         </div>
                        
 
-                        <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
+                        <!-- <div class="form-group{{ $errors->has('file') ? ' has-error' : '' }}">
                             <label for="file" class="col-md-4 control-label">Iamge</label>
 
                             <div class="col-md-6">
@@ -77,7 +85,7 @@ tinymce.init({
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group {{ $errors->has('price') ? 'has-error' : ''}}">
                             {!! Form::label('price', 'Price', ['class' => 'col-md-4 control-label']) !!}
