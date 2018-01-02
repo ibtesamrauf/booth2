@@ -1,8 +1,6 @@
 @extends('layouts.app')
 @section('content')
 	<div class="pppppp">		
-	
-
 	<?php
 	// vv(Cart::instance('shopping')->content());
 	if(!Cart::instance('shopping')->content()->isEmpty()){
@@ -50,6 +48,7 @@
 					<br>
 					<!-- <td> -->
 					All together Price: $<?php echo $row->total; ?>
+					<br><br>
 					<!-- </td> -->
 				<!-- </tr> -->
 			
@@ -74,14 +73,8 @@
 		<?php
 	}
 		?>
-
-        
-
-
-        
-
-        
-</div>
+          
+	</div>
 	<br><br>
 
 @endsection
