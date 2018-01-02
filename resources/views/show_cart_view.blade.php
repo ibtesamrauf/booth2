@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+	<h1 class="my-4">Cart
+	    <small>List</small>
+	</h1>
 	<div class="pppppp">		
 	<?php
 	// vv(Cart::instance('shopping')->content());
