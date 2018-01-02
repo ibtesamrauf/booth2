@@ -14,6 +14,8 @@
 // Route::get('/', 'WelcomeController@index');
 Route::get('/', 'HomeController@hotel');
 
+Route::resource('hotel', 'HotelController');
+
 Route::get('/paypal', 'HomeController@paypal');
 
 Route::get('/home/{hotel_id}', 'HomeController@index');
