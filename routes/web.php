@@ -16,7 +16,7 @@ Route::get('/', 'HomeController@hotel');
 
 Route::get('/paypal', 'HomeController@paypal');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home/{hotel_id}', 'HomeController@index');
 
 Route::get('/add_product_view', 'HomeController@add_product_view');
 Route::post('/add_product', 'HomeController@add_product');

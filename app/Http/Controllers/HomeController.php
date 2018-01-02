@@ -31,15 +31,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($hotel_id)
     {
-        $products = Products::orderBy('id','DESC')->paginate(15);
+        $products = Products::where('hotel_id' , $hotel_id)
+                                // ->orderBy('id','DESC')
+                                ->paginate(15);
         return view('home' , compact('products'));
     }
     
     public function hotel()
     {
-        $hotel = Hotel::orderBy('id','DESC')->paginate(15);
+        $hotel = Hotel::paginate(15);
         return view('hotel' , compact('hotel'));
     }
 
