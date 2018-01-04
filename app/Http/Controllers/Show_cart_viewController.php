@@ -83,12 +83,19 @@ class Show_cart_viewController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        vv("edit");
-        // $user = Network::findOrFail($id);
-        // Cart::instance('shopping')->remove($id);
-        // return view('admin.network.edit', compact('user'));
+        // vv("edit");
+        Validator::make($request->all(), [
+            'cart_product_id'               => 'required',
+            'cart_product_quantity'         => 'required|numeric',
+        ])->validate();
+        $item = Cart::instance('shopping')->get($request->cart_product_id);
+        if(!empty($item)){
+            Cart::instance('shopping')->update($request->cart_product_id, ['qty' => $request->cart_product_quantity] );
+        }
+        // Session::flash('flash_message', 'User added!');
+        return redirect('show_cart_view')->with('status', 'Quantity Updated!');
     }
 
     /**
@@ -102,6 +109,16 @@ class Show_cart_viewController extends Controller
     public function update($id, Request $request)
     {   
         vv("update");
+
+        Validator::make($request->all(), [
+            'cart_product_id'               => 'required',
+            'cart_product_quantity'         => 'required|numeric',
+        ])->validate();
+        $item = Cart::instance('shopping')->get($request->cart_product_id);
+        if(!empty($item)){
+            Cart::instance('shopping')->update($request->cart_product_id, ['qty' => $request->cart_product_quantity] );
+        }
+        return redirect('show_cart_view');
         // $this->validate($request, [
         //     'network_name' => 'required',
         // ]);
@@ -124,12 +141,27 @@ class Show_cart_viewController extends Controller
      */
     public function destroy($id)
     {
+        // vv("destory".$id);
         $item = Cart::instance('shopping')->get($id);
         if(!empty($item)){
             Cart::instance('shopping')->remove($id);
         }
         Session::flash('flash_message', 'User deleted!');
 
-        return back();
+        return redirect('show_cart_view')->with('status', 'Item Deleted Successfully!');
     }
+
+    public function conform_order()
+    {
+        // vv("destory".$id);
+        // $item = Cart::instance('shopping')->get($id);
+        // if(!empty($item)){
+        //     Cart::instance('shopping')->remove($id);
+        // }
+        // Session::flash('flash_message', 'User deleted!');
+
+        return view('conform_order');
+        // ->with('status', 'Item Deleted Successfully!');
+    }
+    
 }

@@ -29,6 +29,7 @@ Route::get('/show_product_view/{product_id}', 'HomeController@show_product_view'
 
 Route::resource('show_cart_view', 'Show_cart_viewController');
 
+Route::get('conform_order', 'Show_cart_viewController@conform_order');
 
 Route::get('/add_to_cart/{add_to_cart_id}/{add_to_cart_product_name}/{add_to_cart_product_price}', 'HomeController@add_to_cart');
 

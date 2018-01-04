@@ -1,8 +1,15 @@
 @extends('layouts.app')
 @section('content')
+
 	<h1 class="my-4">Cart
 	    <small>List</small>
 	</h1>
+	<!-- flash message -->
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
 	<div class="pppppp">		
 	<?php
 	// vv(Cart::instance('shopping')->content());
@@ -24,26 +31,26 @@
 						<p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
 					<!-- </td> -->
 					<!-- <td> -->
-	                    {!! Form::open(['url' => ['/show_cart_view'], 'files' => true]) !!}
-							<input type="hidden" name="cart_product_id" value="<?php echo $row->rowId; ?>"></td>
+						<form action="/show_cart_view/{{$row->rowId}}/edit" method="GET">
+	                    	<input type="hidden" name="cart_product_id" value="<?php echo $row->rowId; ?>"></td>
 
 							<input type="number" name="cart_product_quantity" value="<?php echo $row->qty; ?>"></td>
 							{!! $errors->first('product_quantity', '<p class="help-block">:message</p>') !!}
 	                        {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'UPDATE', ['class' => 'btn btn-primary']) !!}
-	                    {!! Form::close() !!}
+	                    </form>
 					<!-- </td> -->
 					<!-- <td> -->
-						{!! Form::open([
-	                        'method'=>'DELETE',
-	                        'url' => ['/show_cart_view', $row->rowId]
-	                    ]) !!}
-	                        {!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
+						
+						<form action="{{ URL::route('show_cart_view.destroy', $row->rowId) }}" method="POST">
+	                        {{ method_field('DELETE') }}
+                            {{ csrf_field() }}
+							{!! Form::button('<i class="fa fa-trash-o" aria-hidden="true"></i> Delete', array(
 	                                'type' => 'submit',
 	                                'class' => 'btn btn-danger btn-xs',
 	                                'title' => 'Delete',
 	                                'onclick'=>'return confirm("Confirm delete?")'
 	                        )) !!}
-	                    {!! Form::close() !!}
+	                    </form>
 					<!-- </td> -->
 					<!-- <td> -->
 					Single Item Price: $<?php echo $row->price; ?>
@@ -67,6 +74,7 @@
 		echo "Total: ".Cart::instance('shopping')->total();
 		?>
 		<br><br>
+		<a href="/conform_order" class="btn btn-success">Continue</a>
      <!--    <input type="submit" class="btn btn-success" value="Paypal">
     </form> -->
     <?php
