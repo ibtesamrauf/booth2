@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Products extends Model
 {
+    // notes
+    // status {1 for enable and 0 for disable}
+    
+
     /**
      * The database table used by the model.
      *
@@ -27,7 +31,7 @@ class Products extends Model
      */
  
  
-    protected $fillable = ['hotel_id', 'title', 'description', 'price', 'image'];
+    protected $fillable = ['hotel_id', 'status', 'title', 'description', 'price', 'image'];
     
     public function one_hotel(){
         return $this->hasOne('App\Hotel' , 'id', 'hotel_id');

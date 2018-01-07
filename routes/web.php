@@ -1,5 +1,5 @@
 <?php
-
+use App\Products;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +42,23 @@ Route::get('/add_to_cart/{add_to_cart_id}/{add_to_cart_product_name}/{add_to_car
 Route::resource('network', 'ProductController');
 
 Route::resource('booth', 'ProductController');
+
+Route::get('disable_booth_after_paypal', function () {
+	$temp = "";	
+	if(!empty($_GET['ids'])){
+		$products_ids_to_disable = $_GET['ids'];
+		$temp = explode(",,", $products_ids_to_disable);
+		$temp = array_filter($temp);
+		$temp = array_values($temp);
+	}
+	foreach ($temp as $key => $value) {
+		Products::where('id', $value)->update(['status' => 0]);
+	}
+	// v($temp);
+	// die;
+	// Cart::instance('shopping')->destroy();
+    // Cart::instance('shopping')->add('192ao1ss', 'Product new', 1, 10.00);
+    Cart::instance('shopping')->destroy();
+
+    return redirect('/')->with('status', 'Order successful. Come again Thanks!');
+});

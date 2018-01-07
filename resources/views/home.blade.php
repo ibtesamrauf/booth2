@@ -77,17 +77,17 @@ img {
 
 </style>        
 
-        <!-- flash message -->
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
        <!-- Page Heading -->
       <h1 class="my-4">Booth
         <small>List</small>
       </h1>
 
+      <!-- flash message -->
+      @if (session('status'))
+          <div class="alert alert-success">
+              {{ session('status') }}
+          </div>
+      @endif
       <div class="row">
         @foreach ($products as $user)
             <div class="col-lg-2 col-sm-2 portfolio-item container11">
@@ -104,7 +104,7 @@ img {
                       <span>${{ $user->price }}</span>
                     </p>
                     <div class="button11">
-                      <a class="btn btn-primary" href="/add_to_cart/{{$user->id.$user->title}}/{{$user->title}}/{{$user->price}}"> 
+                      <a class="btn btn-primary" href="/add_to_cart/{{$user->id.',,'.$user->title}}/{{$user->title}}/{{$user->price}}"> 
                         ADD TO CART 
                       </a>
                       <!-- <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-warning"></span> -->

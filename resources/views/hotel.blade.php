@@ -1,15 +1,16 @@
 @extends('layouts.app')
 @section('content')
-        <!-- flash message -->
-        @if (session('status'))
-            <div class="alert alert-success">
-                {{ session('status') }}
-            </div>
-        @endif
        <!-- Page Heading -->
       <h1 class="my-4">Hotel
         <small>List</small>
       </h1>
+     
+      <!-- flash message -->
+      @if (session('status'))
+          <div class="alert alert-success">
+              {{ session('status') }}
+          </div>
+      @endif
 
       <div class="row">
         @foreach ($hotel as $user)

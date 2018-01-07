@@ -53,24 +53,32 @@
 	                    </form>
 					<!-- </td> -->
 					<!-- <td> -->
-					Single Item Price: $<?php echo $row->price; ?>
-					<!-- </td> -->
+					<?php
+						if($row->qty != 1){
+ 					?>
+			 				Single Item Price: $<?php echo $row->price; ?>
+		        			Total Price: $<?php echo $row->total; ?>
+ 					<?php
+		 				}else{
+ 					?>
+			 				Item Price: $<?php echo $row->price; ?>
+ 					<?php
+		 				}
+					?>
+<!-- 					Single Item Price: $<?php echo $row->price; ?>
 					<br>
-					<!-- <td> -->
 					All together Price: $<?php echo $row->total; ?>
-					<br><br>
+ -->					<br><br>
 					<!-- </td> -->
 				<!-- </tr> -->
 			
 		<?php } ?>
-		<br>
 		<!-- </div> -->
 		<!-- <input type="hidden" name="item_name_2" value="item name 2">
 
         <input type="hidden" name="amount_2" value="3.00"> -->
 
 		<?php
-		echo "<br>";
 		echo "Total: ".Cart::instance('shopping')->total();
 		?>
 		<br><br>

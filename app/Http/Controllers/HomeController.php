@@ -41,6 +41,9 @@ class HomeController extends Controller
     
     public function hotel()
     {
+        if(isset($_GET['pass'])){
+            $_GET['pass'];
+        }
         $hotel = Hotel::paginate(15);
         return view('hotel' , compact('hotel'));
     }

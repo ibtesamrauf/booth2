@@ -38,6 +38,11 @@
                                         <td>{{ $user->one_hotel->name }}</td>
                                     </tr>
                                     <tr>
+                                        <th>Status</th>
+                                        <td>{{ $user->status }}</td>
+                                    </tr>
+
+                                    <tr>
                                         <th>Description</th>
                                         <td><?php echo addslashes($user->description) ?></td>
                                     </tr>

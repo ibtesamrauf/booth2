@@ -75,6 +75,7 @@ class ProductController extends Controller
         Products::create([
             // 'user_id'       => \Auth::user()->id,
             'hotel_id'      => $request->select_hotel,
+            'status'        => 1,
             'title'         => $request->title,
             'description'   => $request->description,
             'price'         => $request->price,

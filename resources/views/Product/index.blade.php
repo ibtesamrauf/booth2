@@ -36,6 +36,7 @@
                                     <tr>
                                         <th>Title</th>
                                         <th>Belongs to</th>
+                                        <th>Status</th>                                        
                                         <th>Description</th>
                                         <th>price</th>
                                         <!-- <th>Image</th> -->
@@ -47,6 +48,7 @@
                                     <tr>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->one_hotel->name }}</td>
+                                        <td>{{ $item->status }}</td>
                                         <td><?php echo addslashes($item->description) ?></td>
                                         <td>{{ $item->price }}</td>
                                         <!-- <td>{{ $item->image }}</td> -->
