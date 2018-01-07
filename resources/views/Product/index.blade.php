@@ -48,7 +48,15 @@
                                     <tr>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->one_hotel->name }}</td>
-                                        <td>{{ $item->status }}</td>
+                                        <td>
+                                        <?php 
+                                            if($item->status == 0){
+                                                echo "Disable";
+                                            }else{
+                                                echo "Enable";
+                                            }
+                                        ?>
+                                        </td>
                                         <td><?php echo addslashes($item->description) ?></td>
                                         <td>{{ $item->price }}</td>
                                         <!-- <td>{{ $item->image }}</td> -->
