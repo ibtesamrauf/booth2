@@ -50,7 +50,7 @@
                                         <td>
                                     <?php 
                                         if(!empty($item->one_hotel)){
-                                            echo "$item->one_hotel->name";
+                                            echo $item->one_hotel->name;
                                         }else{
                                             echo "Hotel is deleted";
                                         }
