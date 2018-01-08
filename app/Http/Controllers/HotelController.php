@@ -115,11 +115,21 @@ class HotelController extends Controller
      */
     public function update($id, Request $request)
     {   
+        $image_name = "";
         $this->validate($request, [
             'name'         => 'required',
         ]);
         $requestData = $request->all();
-    
+        
+        if(Input::hasFile('image')){
+            echo 'Uploaded';
+            $file = Input::file('image');
+            $file->move('uploads', $file->getClientOriginalName());
+            echo '';
+            $image_name = $file->getClientOriginalName();
+            $requestData['image'] = $image_name; 
+        }
+        // vv($requestData);
         $user = Hotel::findOrFail($id);
         $user->update($requestData);
 

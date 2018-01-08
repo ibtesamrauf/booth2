@@ -14,6 +14,20 @@
     </div>
 </div>
 
+<div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
+    <label for="image" class="col-md-4 control-label">Iamge</label>
+
+    <div class="col-md-6">
+        <input type="file" name="image" id="image">
+
+        @if ($errors->has('image'))
+            <span class="help-block">
+                <strong>{{ $errors->first('image') }}</strong>
+            </span>
+        @endif
+    </div>
+</div>
+
 <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
         {!! Form::submit(isset($submitButtonText) ? $submitButtonText : 'Create', ['class' => 'btn btn-primary']) !!}
