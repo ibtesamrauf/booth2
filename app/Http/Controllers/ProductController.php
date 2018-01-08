@@ -31,7 +31,7 @@ class ProductController extends Controller
     {
         $perPage = 15;    
         $device = Products::with('one_hotel')->orderBy('id','DESC')->paginate($perPage);
-      
+        // vv($device);
         return view('Product.index', compact('device'));
     }
 

@@ -36,6 +36,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Image</th>
+                                        <th>Descrioption</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -43,7 +44,8 @@
                                 @foreach($device as $item)
                                     <tr>
                                         <td>{{ $item->name }}</td>
-                                        <td>{{ $item->image }}</td>
+                                        <td><img src="uploads/{{ $item->image }}" style="width:200px;height:150px"></td>
+                                        <td>{{ $item->description }}</td>
                                         <td>
                                             <a href="{{ url('/hotel/' . $item->id) }}" title="View User"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/hotel/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

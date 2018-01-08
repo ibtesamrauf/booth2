@@ -23,7 +23,7 @@
                 <h4 class="card-title">
                   <a href="/home/{{ $user->id }}">{{ $user->name }}</a>
                 </h4>
-                <!-- <p class="card-text"><?php echo addslashes(substr($user->description, 0, 100))." ..." ?></p> -->
+                <p class="card-text"><?php echo addslashes(substr($user->description, 0, 100))." ..." ?></p>
               </div>
             </div>
           </div>

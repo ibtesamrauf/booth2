@@ -58,7 +58,8 @@ class HotelController extends Controller
     {
         $image_name = "";
         $this->validate($request, [
-            'name'         => 'required',
+            'name'                  => 'required',
+            'description'           => 'required',
         ]);
 
         if(Input::hasFile('file')){
@@ -70,7 +71,8 @@ class HotelController extends Controller
         }
 
         Hotel::create([
-            'name'         => $request->name,
+            'name'          => $request->name,
+            'description'   => $request->description,
             'image'         => $image_name,
         ]);
        

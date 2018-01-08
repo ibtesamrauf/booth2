@@ -47,7 +47,15 @@
                                 @foreach($device as $item)
                                     <tr>
                                         <td>{{ $item->title }}</td>
-                                        <td>{{ $item->one_hotel->name }}</td>
+                                        <td>
+                                    <?php 
+                                        if(!empty($item->one_hotel)){
+                                            echo "$item->one_hotel->name";
+                                        }else{
+                                            echo "Hotel is deleted";
+                                        }
+                                    ?>
+                                        </td>
                                         <td>
                                         <?php 
                                             if($item->status == 0){

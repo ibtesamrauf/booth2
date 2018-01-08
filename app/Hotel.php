@@ -27,7 +27,7 @@ class Hotel extends Model
      */
  
  
-    protected $fillable = ['name','image'];
+    protected $fillable = ['name','description','image'];
     
     // public function ImageDesc(){
     //     return $this->hasMany('App\Image_order');
