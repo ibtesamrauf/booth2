@@ -49,6 +49,13 @@ class HomeController extends Controller
         return view('hotel' , compact('hotel'));
     }
 
+    public function test()
+    {
+        $hotel = Hotel::paginate(15);
+        // return view('hotel' , compact('hotel'));
+        return view('test' , compact('hotel'));
+    }
+
     public function add_product_view()
     {
         return view('add_product_view');

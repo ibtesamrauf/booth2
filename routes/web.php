@@ -62,3 +62,6 @@ Route::get('disable_booth_after_paypal', function () {
 
     return redirect('/')->with('status', 'Order successful. Come again Thanks!');
 });
+
+Route::get('/test', 'HomeController@test');
+

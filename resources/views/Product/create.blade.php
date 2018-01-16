@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=1phgebrbot7kwhpiwjvvtww2nc8l5fcwcqo7nwa2du5gzs7k"></script>
 <script>
 // tinymce.init({ selector:'textarea' });
 
