@@ -12,7 +12,8 @@ use App\Products;
 */
 
 // Route::get('/', 'WelcomeController@index');
-Route::get('/', 'HomeController@hotel');
+// Route::get('/', 'HomeController@hotel');
+Route::get('/', 'HomeController@test');
 
 Route::resource('hotel', 'HotelController');
 
