@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
         $products = Products::where('hotel_id' , $hotel_id)
                                 // ->where('status' , 1)
-                                // ->orderBy('id','DESC')
+                                ->orderBy('title','ASC')
                                 ->paginate(15);
         return view('home' , compact('products'));
     }
