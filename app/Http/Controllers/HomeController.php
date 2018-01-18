@@ -86,7 +86,7 @@ class HomeController extends Controller
             'image'         => $image_name,
         ]);
 
-        return redirect('home')->with('status', 'Product Added!');
+        return redirect('home')->with('status', 'Booth Added!');
     }
 
     public function show_product_view($product_id){
@@ -99,8 +99,16 @@ class HomeController extends Controller
     }
 
     public function add_to_cart($add_to_cart_id,$add_to_cart_product_name,$add_to_cart_product_price){
+        if(Cart::instance('shopping')->content()->isEmpty()){
+            Cart::instance('shopping')->add($add_to_cart_id, $add_to_cart_product_name, 1, $add_to_cart_product_price);
+        }
+        foreach (Cart::instance('shopping')->content() as $key => $value) {
+            if($value->id == $add_to_cart_id){
+                return back()->with('status', 'Booth already in Cart!');
+            }
+        }
         Cart::instance('shopping')->add($add_to_cart_id, $add_to_cart_product_name, 1, $add_to_cart_product_price);
-        return back()->with('status', 'Product Added To Cart!');
+        return back()->with('status', 'Booth Added To Cart!');
     }
 
     public function paypal()
