@@ -91,10 +91,11 @@ img {
       <div class="row">
         @foreach ($products as $user)
             <div class="col-lg-2 col-sm-2 portfolio-item container11">
-                <div class="card h-100 overlay11" style="overflow: hidden;background-color: #00b04e;">
+                <div class="card h-100 overlay11" style="overflow: hidden;{{ $user->status ? ' background-color: #00b04e' : ' background-color: #363737' }}">
                   <div class="card-body">
                     <h6 style=" color: white; " class="card-title">
                       <p>{{ $user->title }}</p>
+                      <!-- <p>{{ $user->status }}</p> -->
                     </h6>
 <!--                     <a href="/add_to_cart/{{$user->id.$user->title}}/{{$user->title}}/{{$user->price}}">
                       <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-warning"></span>
@@ -104,9 +105,21 @@ img {
                       <span>${{ $user->price }}</span>
                     </p>
                     <div class="button11">
-                      <a class="btn btn-primary" href="/add_to_cart/{{$user->id.',,'.$user->title}}/{{$user->title}}/{{$user->price}}"> 
-                        ADD TO CART 
-                      </a>
+                      <?php
+                        if($user->status == 0){
+                      ?>
+                          <a class="btn btn-primary" style="color: white;"> 
+                            Already Booked 
+                          </a>
+                      <?php
+                        }else{
+                      ?>
+                          <a class="btn btn-primary" href="/add_to_cart/{{$user->id.',,'.$user->title}}/{{$user->title}}/{{$user->price}}"> 
+                            ADD TO CART 
+                          </a>
+                      <?php
+                        }
+                      ?>
                       <!-- <span class="glyphicon btn-glyphicon glyphicon-plus img-circle text-warning"></span> -->
                     </div>
                     <!-- <p class="card-text"><?php echo addslashes(substr($user->description, 0, 100))." ..." ?></p> -->

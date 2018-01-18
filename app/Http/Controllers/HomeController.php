@@ -34,7 +34,7 @@ class HomeController extends Controller
     public function index($hotel_id)
     {
         $products = Products::where('hotel_id' , $hotel_id)
-                                ->where('status' , 1)
+                                // ->where('status' , 1)
                                 // ->orderBy('id','DESC')
                                 ->paginate(15);
         return view('home' , compact('products'));
