@@ -10,6 +10,7 @@ use App\Products;
 use App\Hotel;
 use Cart;
 // use Session;
+use App\Country; 
 
 class HomeController extends Controller
 {
@@ -37,7 +38,9 @@ class HomeController extends Controller
                                 // ->where('status' , 1)
                                 // ->orderBy('id','DESC')
                                 ->paginate(15);
-        return view('home' , compact('products'));
+
+
+        return view('home' , compact('products' ));
     }
     
     public function hotel()
@@ -53,7 +56,9 @@ class HomeController extends Controller
     {
         $hotel = Hotel::paginate(15);
         // return view('hotel' , compact('hotel'));
-        return view('test' , compact('hotel'));
+        $country = Country::get();
+
+        return view('test' , compact('hotel', 'country'));
     }
 
     public function add_product_view()
