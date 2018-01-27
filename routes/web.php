@@ -11,6 +11,8 @@ use App\Products;
 |
 */
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 // Route::get('/', 'WelcomeController@index');
 // Route::get('/', 'HomeController@hotel');
 Route::get('/', 'HomeController@test');
@@ -66,3 +68,7 @@ Route::get('disable_booth_after_paypal', function () {
 
 Route::get('/test', 'HomeController@test');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

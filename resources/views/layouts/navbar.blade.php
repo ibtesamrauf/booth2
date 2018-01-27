@@ -6,7 +6,23 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
+          
           <ul class="navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @if (Auth::guest())
+    
+            @else
+                <li class="nav-item active">
+                    <a class="nav-link">
+                        {{ Auth::user()->name }} &nbsp <span class="glyphicon glyphicon-arrow-right"></span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{{ url('/logout') }}">
+                    <i class="fa fa-btn fa-sign-out"></i>Logout &nbsp &nbsp &nbsp &nbsp 
+                  </a>
+                </li>
+            @endif
             <li class="nav-item active">
               <a class="nav-link" href="/">Home
                 <span class="sr-only">(current)</span>
