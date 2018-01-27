@@ -62,24 +62,21 @@ class HomeController extends Controller
                             ->orWhere('description', 'like',  "%$request->search%")
                             ->orWhere('country_id' , $request->country_select)
                             ->paginate(12);
-                            v('1');
+                            // v('1');
         }
         elseif(isset($request->country_select) && (empty($request->search)))
         {
             $hotel = Hotel::orWhere('country_id' , $request->country_select)->paginate(12);
-                            v('2');
-
+                            // v('2');
         }
         elseif (isset($request->search) && (empty($request->country_select))) {
             $hotel = Hotel::where('name' , 'like',  "%$request->search%")
                         ->orWhere('description', 'like',  "%$request->search%")
                         ->paginate(12);
-                            v('3');
-
+                            // v('3');
         }
         else{
-                            v('4');
-
+                            // v('4');/
             $hotel = Hotel::paginate(12);
         }
                 
