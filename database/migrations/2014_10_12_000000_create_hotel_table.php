@@ -13,13 +13,15 @@ class CreateHotelTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('description',1000);
-            $table->string('image',1000);
-            $table->timestamps();
-        });
+        if(!Schema::hasTable('hotel')){
+            Schema::create('hotel', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('description',1000);
+                $table->string('image',1000);
+                $table->timestamps();
+            });
+        }
     }
 
     /**
