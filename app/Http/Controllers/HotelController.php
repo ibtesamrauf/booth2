@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
-
+use App\Country;
 
 class HotelController extends Controller
 {
@@ -32,8 +32,8 @@ class HotelController extends Controller
     public function index(Request $request)
     {
         $perPage = 15;    
-        $device = Hotel::orderBy('id','DESC')->paginate($perPage);
-      
+        $device = Hotel::with('Country_name')->orderBy('id','DESC')->paginate($perPage);
+        // vv($device);
         return view('hotel.index', compact('device'));
     }
 
@@ -44,7 +44,9 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view('hotel.create');
+        $country = Country::pluck('name' , 'id');
+        // vv($country);
+        return view('hotel.create' , compact('country'));
     }
 
     /**
@@ -72,6 +74,7 @@ class HotelController extends Controller
 
         Hotel::create([
             'name'          => $request->name,
+            'country_id'    => $request->country_id,
             'description'   => $request->description,
             'image'         => $image_name,
         ]);
@@ -102,7 +105,10 @@ class HotelController extends Controller
     public function edit($id)
     {
         $user = Hotel::findOrFail($id);
-        return view('hotel.edit', compact('user'));
+        // vv($user);
+        $country = Country::pluck('name' , 'id');
+        
+        return view('hotel.edit', compact('user' , 'country'));
     }
 
     /**

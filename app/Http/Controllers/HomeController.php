@@ -52,9 +52,17 @@ class HomeController extends Controller
         return view('hotel' , compact('hotel'));
     }
 
-    public function test()
+    public function test(Request $request)
     {
-        $hotel = Hotel::paginate(15);
+        if(isset($request->search)){
+            $hotel = Hotel::where('name' , 'like',  "%$request->search%")
+                            ->orWhere('description', 'like',  "%$request->search%")
+                            ->paginate(12);
+            // v($hotel);
+        }else{
+            $hotel = Hotel::paginate(12);
+        }
+                
         // return view('hotel' , compact('hotel'));
         $country = Country::get();
 

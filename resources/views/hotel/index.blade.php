@@ -37,6 +37,7 @@
                                         <th>Name</th>
                                         <th>Image</th>
                                         <th>Descrioption</th>
+                                        <th>Country</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -46,6 +47,15 @@
                                         <td>{{ $item->name }}</td>
                                         <td><img src="uploads/{{ $item->image }}" style="width:200px;height:150px"></td>
                                         <td>{{ $item->description }}</td>
+                                        <td>
+                                            <?php 
+                                                if(!empty($item->Country_name->id)){
+                                                    echo $item->Country_name->name;
+                                                }else{
+                                                    echo "Not selected";
+                                                }
+                                            ?>
+                                        </td>
                                         <td>
                                             <a href="{{ url('/hotel/' . $item->id) }}" title="View User"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/hotel/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

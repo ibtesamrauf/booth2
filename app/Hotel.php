@@ -27,11 +27,11 @@ class Hotel extends Model
      */
  
  
-    protected $fillable = ['name','description','image'];
+    protected $fillable = ['name','country_id','description','image'];
     
-    // public function ImageDesc(){
-    //     return $this->hasMany('App\Image_order');
-    // }
+    public function Country_name(){
+        return $this->hasOne('App\Country' , 'id' , 'country_id');
+    }
     
     // public function HotspotInfo(){
     //     return $this->hasMany('App\Hot_spot_info');

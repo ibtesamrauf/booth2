@@ -30,6 +30,14 @@
                             </div>
                         </div>
 
+                        <div class="form-group {{ $errors->has('country_id') ? 'has-error' : ''}}">
+                            {!! Form::label('country_id', 'Country', ['class' => 'col-md-4 control-label']) !!}
+                            <div class="col-md-6">
+                                {!! Form::select('country_id', $country, null, ['class' => 'form-control']) !!}
+                                {!! $errors->first('country_id', '<p class="help-block">:message</p>') !!}
+                            </div>
+                        </div>
+
                         <div class="form-group {{ $errors->has('description') ? 'has-error' : ''}}">
                             {!! Form::label('description', 'Description', ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
