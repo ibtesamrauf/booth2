@@ -99,31 +99,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="banner">
             <div class="container_wrap">
                 <h1>What are you looking for?</h1>
-                <div class="dropdown-buttons">   
-                    <div class="dropdown-button">                    
-                        <select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-                            <option selected>All</option>  
-                            @foreach($country as $coun)
-                            <option value="{{ $coun->id }}">{{ $coun->name }}</option> 
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="dropdown-button">
-                        <select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-                            <option selected>All</option>  
-
-                            <option value="0">Hotels</option>  
-                            <option value="1">tempor</option>
-                            <option value="2">congue</option>
-                            <option value="3">maxim </option>
-                            <option value="4">mutationem</option>
-                            <option value="5">hendrerit </option>
-                            <option value="5"></option>
-                            <option value="5"></option>
-                        </select>
-                    </div>
-                </div>  
                 <form action="/" method="GET">
+                    <div class="dropdown-buttons">   
+                        <div class="dropdown-button">                    
+                            <select id="country_select" name="country_select" class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
+                                <option selected>All</option>  
+                                @foreach($country as $coun)
+                                    <option value="{{ $coun->id }}">{{ $coun->name }}</option> 
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="dropdown-button">
+                            <select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
+                                <option selected>All</option>  
+
+                                <option value="0">Hotels</option>  
+                                <option value="1">tempor</option>
+                                <option value="2">congue</option>
+                                <option value="3">maxim </option>
+                                <option value="4">mutationem</option>
+                                <option value="5">hendrerit </option>
+                                <option value="5"></option>
+                                <option value="5"></option>
+                            </select>
+                        </div>
+                    </div>  
                     <input type="text" name="search" id="search" placeholder="Enter Hotel name" onfocus="this.value = '';" onblur="if (this.value == '') {
                                             this.value = 'Keyword, name, date, ...';
                                         }">
