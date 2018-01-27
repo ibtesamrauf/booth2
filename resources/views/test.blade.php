@@ -103,24 +103,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="dropdown-buttons">   
                         <div class="dropdown-button">                    
                             <select id="country_select" name="country_select" class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-                                <option selected>All</option>  
+                                <option selected>All Country</option>  
                                 @foreach($country as $coun)
                                     <option value="{{ $coun->id }}">{{ $coun->name }}</option> 
                                 @endforeach
                             </select>
                         </div>
                         <div class="dropdown-button">
-                            <select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-                                <option selected>All</option>  
-
-                                <option value="0">Hotels</option>  
-                                <option value="1">tempor</option>
-                                <option value="2">congue</option>
-                                <option value="3">maxim </option>
-                                <option value="4">mutationem</option>
-                                <option value="5">hendrerit </option>
-                                <option value="5"></option>
-                                <option value="5"></option>
+                            <select name="hotel_select" id="hotel_select" class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
+                                <option selected>All Hotel</option>  
+                                @foreach($hotel_lists as $h_list)
+                                    <option value="{{ $h_list->id }}">{{ $h_list->name }}</option> 
+                                @endforeach
                             </select>
                         </div>
                     </div>  

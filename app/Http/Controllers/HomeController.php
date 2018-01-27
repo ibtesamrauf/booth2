@@ -54,36 +54,46 @@ class HomeController extends Controller
 
     public function test(Request $request)
     {
-        if($request->country_select == "All"){
+        if($request->country_select == "All Country"){
             $request->country_select = "";
         }
-        if(!empty($request->search) && !empty($request->country_select) ){
+
+        if($request->hotel_select == "All Hotel"){
+            $request->hotel_select = "";
+        }
+
+        if(!empty($request->search) && !empty($request->country_select) && !empty($request->hotel_select)){
             $hotel = Hotel::where('name' , 'like',  "%$request->search%")
                             ->orWhere('description', 'like',  "%$request->search%")
                             ->orWhere('country_id' , $request->country_select)
+                            ->orWhere('id', $request->hotel_select)
                             ->paginate(12);
                             // v('1');
         }
-        elseif(isset($request->country_select) && (empty($request->search)))
+        elseif(!empty($request->country_select) && (empty($request->search)))
         {
             $hotel = Hotel::orWhere('country_id' , $request->country_select)->paginate(12);
-                            // v('2');
+                            v('2');
         }
-        elseif (isset($request->search) && (empty($request->country_select))) {
+        elseif (!empty($request->search) && (empty($request->country_select))) {
             $hotel = Hotel::where('name' , 'like',  "%$request->search%")
                         ->orWhere('description', 'like',  "%$request->search%")
                         ->paginate(12);
                             // v('3');
         }
+        elseif(!empty($request->hotel_select) && (empty($request->search)) && (empty($request->country_select))){
+            // v("4");
+            $hotel = Hotel::where('id', $request->hotel_select)->paginate(12);
+        }
         else{
-                            // v('4');/
+                            // v('5');
             $hotel = Hotel::paginate(12);
         }
                 
         // return view('hotel' , compact('hotel'));
         $country = Country::get();
-
-        return view('test' , compact('hotel', 'country'));
+        $hotel_lists = Hotel::get();
+        return view('test' , compact('hotel', 'country', 'hotel_lists'));
     }
 
     public function add_product_view()
