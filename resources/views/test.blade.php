@@ -99,31 +99,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <div class="banner">
    	  <div class="container_wrap">
    		<h1>What are you looking for?</h1>
-   	       <div class="dropdown-buttons">   
-            		  <div class="dropdown-button">           			
+   	         <div class="dropdown-buttons">   
+         		   <div class="dropdown-button">           			
             			<select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
-            			<option value="0">Dubai</option>	
-						<option value="1">Australia</option>
-						<option value="2">Sri Lanka</option>
-						<option value="3"> New Zealand</option>
-						<option value="4">Pakistan</option>
-						<option value="5">United Kingdom</option>
-						<option value="6">United states</option>
-						<option value="7">Russia</option>
-						<option value="8">Mirum</option>
-					  </select>
-					</div>
-				     <div class="dropdown-button">
-					  <select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
+                           <option selected>All</option>  
+                        @foreach($country as $coun)
+               			   <option value="{{ $coun->id }}">{{ $coun->name }}</option>	
+                        @endforeach
+                     </select>
+   					</div>
+				      <div class="dropdown-button">
+					   <select class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
+                     <option selected>All</option>  
+                     
             			<option value="0">Hotels</option>	
-						<option value="1">tempor</option>
-						<option value="2">congue</option>
-						<option value="3">maxim </option>
-						<option value="4">mutationem</option>
-						<option value="5">hendrerit </option>
-						<option value="5"></option>
-						<option value="5"></option>
-					  </select>
+   						<option value="1">tempor</option>
+   						<option value="2">congue</option>
+   						<option value="3">maxim </option>
+   						<option value="4">mutationem</option>
+   						<option value="5">hendrerit </option>
+   						<option value="5"></option>
+   						<option value="5"></option>
+					   </select>
 					 </div>
 				   </div>  
 		    <form>
@@ -187,357 +184,98 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    <div class="content_middle">
    	  <div class="container">
    	    <div class="content_middle_box">
-          <div class="top_grid">
-            <?php 
-               $counter = 0;
-               $table_number = 4;
-               $table_number_Counter = 4;
-               $temp = 2;
-            ?>
-            @foreach ($hotel as $key => $data)
-      			<div class="col-md-3 index-grids" style="max-height: 320px;">
-                  <?php
-                     if($counter >= 4 ){
-                        echo "<br>";
-                        $table_number_Counter = $table_number_Counter * $temp;
-                        $temp += 1;
-                     }
-                      
-                  ?>
-      			   <div class="grid1">
-         				<div class="view view-first">
-                        <div class="index_img">
-                           <img src="{{ asset('uploads/'.$data->image) }}" style="/* max-height: 173px; */height: 173px;width: 255px;" class="img-responsive" alt=""/>
-                        </div>
-         				   <!-- <div class="sale">$2.980</div> -->
-      			         <div class="mask">
-                           <!-- <div class="info"><i class="search"> </i> Show More</div> -->
-                           <div class="info"><a href="/home/{{ $data->id }}" style=" color: #fff; "><i class="search"> </i> Open</a></div>
-                           <ul class="mask_img">
-                           	<!-- <li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li> -->
-                           	<!-- <li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li> -->
-                           	<div class="clearfix"> </div>
-                           </ul>
-                        </div>
-                     </div> 
-                     <!-- <i class="home"></i> -->
-         				<div class="inner_wrap" style=" height: 137px; ">
-         				 	<h3>{{ $data->name }} {{ $key }}</h3>
-         				 	<ul class="star1">
-         				 	  <h4 class="green">{{ $data->description }}</h4>
-         				 	  <!-- <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li> -->
-         				 	</ul>
-         				</div>
-      			   </div>
-      			</div>
-               <?php
-                  $counter++;
+            <div class="top_grid">
+               <?php 
+                  $counter = 0;
+                  $table_number = 4;
+                  $table_number_Counter = 4;
+                  $temp = 2;
                ?>
-            @endforeach
-   			
-   			<div class="clearfix"> </div>
-   		</div>
-   	    <div class="middle_grid wow fadeInUp" data-wow-delay="0.4s">
-   			<div class="col-md-6 index-grids">
-   			   <div class="grid1">
-   			     <div class="index_img"><img src="{{ asset('images/pic4.jpg') }}" class="img-responsive" alt=""/></div>
-   				  <i class="m_home"> </i>
-                  <ul class="vision">
-                  	 <li>Vision Agency</li>
-                  	 <li class="desc"><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li>
-                  </ul>
-   				  <div class="inner_wrap1">
-   				 	<ul class="item_module">
-   				 	 	<li class="module_left"><img src="{{ asset('images/m1.jpg') }}" class="img-responsive" alt=""/></li>
-   				 	 	<li class="module_right">
-   				 	 		<img src="{{ asset('images/m_star.png') }}" class="img-responsive" alt=""/>
-   				 	 		<h5>Lucy-p</h5>
-   				 	 		<p>"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."</p>
-   				 	 		<a href="single.html" class="content_btn">....read more</a>
-   				 	 	</li>
-   				 	 	<div class="clearfix"> </div>
-   				 	 </ul>
-   				  </div>
-   			   </div>
-   			</div>
-   			<div class="col-md-6 index-grids">
-   			   <div class="grid1">
-   			     <div class="index_img1"><img src="{{ asset('images/pic5.jpg') }}" class="img-responsive" alt=""/></div>
-   				  <i class="m_home1"> </i>
-                  <ul class="vision">
-                  	 <li>Vision Agency</li>
-                  	 <li class="desc"><a href="#"> <img src="{{ asset('images/star2.png') }}" alt="">(236)</a></li>
-                  </ul>
-   				  <div class="inner_wrap1">
-   				 	<ul class="item_module">
-   				 	 	<li class="module_left"><img src="{{ asset('images/m2.jpg') }}" class="img-responsive" alt=""/></li>
-   				 	 	<li class="module_right">
-   				 	 		<img src="{{ asset('images/m_star1.png') }}" class="img-responsive" alt=""/>
-   				 	 		<h5>Lucy-p</h5>
-   				 	 		<p>"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."</p>
-   				 	 		<a href="single.html" class="content_btn">....read more</a>
-   				 	 	</li>
-   				 	 	<div class="clearfix"> </div>
-   				 	 </ul>
-   				  </div>
-   			   </div>
-   			</div>
-   			<div class="clearfix"> </div>
-   		</div>
-   		<div class="top_grid wow fadeInRight" data-wow-delay="0.4s">
-   			<div class="col-md-3 index-grids">
-   			  <div class="grid1">
-   				<div class="view view-first">
-                  <div class="index_img"><img src="{{ asset('images/pic1.jpg') }}" class="img-responsive" alt=""/></div>
-   				     <div class="sale">$2.980</div>
-   			          <div class="mask">
-                       <div class="info"><i class="search"> </i> Show More</div>
-                        <ul class="mask_img">
-                        	<li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li>
-                        	<li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li>
-                        	<div class="clearfix"> </div>
-                        </ul>
-                        </div>
-                    </div> 
-                    <i class="home"></i>
-   				 <div class="inner_wrap">
-   				 	<h3>Lorem Ipsum is simply dummy text</h3>
-   				 	<ul class="star1">
-   				 	  <h4 class="green">Vision Agency</h4>
-   				 	  <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li>
-   				 	</ul>
-   				 </div>
-   			   </div>
-   			</div>
-   			<div class="col-md-3 index-grids">
-   			  <div class="grid1">
-   				<div class="view view-first">
-                  <div class="index_img1"><img src="{{ asset('images/pic2.jpg') }}" class="img-responsive" alt=""/></div>
-   				     <div class="mask">
-                        <div class="info"><i class="search"> </i> Show More</div>
-                        <ul class="mask_img">
-                        	<li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li>
-                        	<li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li>
-                        	<div class="clearfix"> </div>
-                        </ul>
-                      </div>
-                  </div> 
-                 <i class="home1"> </i>
-   				 <div class="inner_wrap">
-   				 	<h3>Lorem Ipsum is simply dummy text</h3>
-   				 	<ul class="star1">
-   				 	  <h4 class="yellow">Vision Agency</h4>
-   				 	  <li><a href="#"> <img src="{{ asset('images/star2.png') }}" alt="">(136)</a></li>
-   				 	</ul>
-   				 </div>
-   			   </div>
-   			</div>
-   			<div class="col-md-3 index-grids">
-   			  <div class="grid1">
-   				<div class="view view-first">
-                  <div class="index_img2"><img src="{{ asset('images/pic6.jpg') }}" class="img-responsive" alt=""/></div>
-   				     <div class="mask">
-                        <div class="info"><i class="search"> </i> Show More</div>
-                        <ul class="mask_img">
-                        	<li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li>
-                        	<li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li>
-                        	<div class="clearfix"> </div>
-                        </ul>
-                      </div>
-                  </div> 
-                 <i class="home2"> </i>
-   				 <div class="inner_wrap">
-   				 	<h3>Lorem Ipsum is simply dummy text</h3>
-   				 	<ul class="star1">
-   				 	  <h4 class="blue">Vision Agency</h4>
-   				 	  <li><a href="#"> <img src="{{ asset('images/star2.png') }}" alt="">(136)</a></li>
-   				 	</ul>
-   				 </div>
-   			   </div>
-   			</div>
-   			<div class="col-md-3 index-grids">
-   			  <div class="grid1">
-   				<div class="view view-first">
-                  <div class="index_img"><img src="{{ asset('images/pic3.jpg') }}" class="img-responsive" alt=""/></div>
-   				     <div class="sale">$2.980</div>
-   			          <div class="mask">
-                      <div class="info"><i class="search"> </i> Show More</div>
-                        <ul class="mask_img">
-                        	<li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li>
-                        	<li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li>
-                        	<div class="clearfix"> </div>
-                        </ul>
-                      </div>
-                  </div> 
-                  <i class="home"></i>
-   				  <div class="inner_wrap">
-   				 	<h3>Lorem Ipsum is simply dummy text</h3>
-   				 	<ul class="star1">
-   				 	  <h4 class="green">Vision Agency</h4>
-   				 	  <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li>
-   				 	</ul>
-   				  </div>
-   			   </div>
-   			</div>
-   			<div class="clearfix"> </div>
-   		</div>
-   		<div class="bottom_grid wow bounce" data-wow-delay="0.4s">
-   		  <div class="col-md-6 index-grids">
-   			   <div class="grid1">
-   			     <div class="index_img1"><img src="{{ asset('images/pic5.jpg') }}" class="img-responsive" alt=""/></div>
-   				  <i class="m_home1"> </i>
-                  <ul class="vision">
-                  	 <li>Vision Agency</li>
-                  	 <li class="desc"><a href="#"> <img src="{{ asset('images/star2.png') }}" alt="">(236)</a></li>
-                  </ul>
-   				  <div class="inner_wrap1">
-   				 	<ul class="item_module">
-   				 	 	<li class="module_left"><img src="{{ asset('images/m2.jpg') }}" class="img-responsive" alt=""/></li>
-   				 	 	<li class="module_right">
-   				 	 		<img src="{{ asset('images/m_star.png') }}" class="img-responsive" alt=""/>
-   				 	 		<h5>Lucy-p</h5>
-   				 	 		<p>"Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."</p>
-   				 	 		<a href="single.html" class="content_btn">....read more</a>
-   				 	 	</li>
-   				 	 	<div class="clearfix"> </div>
-   				 	 </ul>
-   				  </div>
-   			   </div>
-   			</div>
-   			<div class="col-md-3 index-grids">
-   			  <div class="grid1">
-   				<div class="view view-first">
-                  <div class="index_img"><img src="{{ asset('images/pic3.jpg') }}" class="img-responsive" alt=""/></div>
-   				     <div class="sale">$2.980</div>
-   			          <div class="mask">
-                      <div class="info"><i class="search"> </i> Show More</div>
-                        <ul class="mask_img">
-                        	<li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li>
-                        	<li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li>
-                        	<div class="clearfix"> </div>
-                        </ul>
-                      </div>
-                  </div> 
-                  <i class="b_home"></i>
-   				  <div class="inner_wrap2">
-   				 	<h3>Lorem Ipsum is simply dummy text</h3>
-   				 	<ul class="star1">
-   				 	  <h4 class="green">Vision Agency</h4>
-   				 	  <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li>
-   				 	</ul>
-   				  </div>
-   			   </div>
-   			</div>
-   			<div class="col-md-3 index-grids">
-   			  <div class="grid1">
-   				<div class="view view-first">
-                  <div class="index_img1"><img src="{{ asset('images/pic2.jpg') }}" class="img-responsive" alt=""/></div>
-   				     <div class="mask">
-                        <div class="info"><i class="search"> </i> Show More</div>
-                        <ul class="mask_img">
-                        	<li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li>
-                        	<li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li>
-                        	<div class="clearfix"> </div>
-                        </ul>
-                      </div>
-                  </div> 
-                 <i class="b_home1"> </i>
-   				 <div class="inner_wrap2">
-   				 	<h3>Lorem Ipsum is simply dummy text</h3>
-   				 	<ul class="star1">
-   				 	  <h4 class="yellow">Vision Agency</h4>
-   				 	  <li><a href="#"> <img src="{{ asset('images/star2.png') }}" alt="">(136)</a></li>
-   				 	</ul>
-   				 </div>
-   			   </div>
-   			</div>
-   			<div class="clearfix"></div>
-   			</div>
-   		  </div>
-   		  <div class="offering">
-   		  	  <h2>What can Hotel Deluxe offer to you ?</h2>
-   		  	  <h3>Ut wisi enim ad minim veniam, quis</h3>
-   		  	  <ul class="icons wow fadeInUp" data-wow-delay="0.4s">
-   		  	  	 <li><i class="icon1"> </i><span class="one"> </span></li>
-   		  	  	 <li><i class="icon2"> </i><span class="two"> </span></li>
-   		  	  	 <li><i class="icon3"> </i><span class="three"> </span></li>
-   		  	  	 <li><i class="icon4"> </i><span class="four"> </span></li>
-   		  	  	 <li><i class="icon5"> </i></li>
-   		  	  </ul>
-   		  	  <div class="real">
-   		  	  	<h4>Reality</h4>
-   		  	  	<div class="col-sm-6">
-   		  	  	  <ul class="service_grid">
-   	   				<i class="s1"> </i>
-   	   				 <li class="desc1 wow fadeInRight" data-wow-delay="0.4s">
-   	   				   <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod maxim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum</p>
-   	   				 </li>
-   	   				 <div class="clearfix"> </div>
-   	   			   </ul>
-   	   			 </div>
-   	   			 <div class="col-sm-6">
-   		  	  	  <ul class="service_grid">
-   	   				<i class="s2"> </i>
-   	   				 <li class="desc1 wow fadeInRight" data-wow-delay="0.4s">
-   	   				   <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod maxim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum</p>
-   	   				 </li>
-   	   				 <div class="clearfix"> </div>
-   	   			   </ul>
-   	   			 </div>
-   	   			 <div class="clearfix"> </div>
-   	   			 </div>
-   		  	  </div>
+               @foreach ($hotel as $key => $data)
+         			<div class="col-md-3 index-grids" style="max-height: 320px;">
+                     <?php
+                        if($counter >= 4 ){
+                           echo "<br>";
+                           $table_number_Counter = $table_number_Counter * $temp;
+                           $temp += 1;
+                        }
+                         
+                     ?>
+         			   <div class="grid1">
+            				<div class="view view-first">
+                           <div class="index_img">
+                              <img src="{{ asset('uploads/'.$data->image) }}" style="/* max-height: 173px; */height: 173px;width: 255px;" class="img-responsive" alt=""/>
+                           </div>
+            				   <!-- <div class="sale">$2.980</div> -->
+         			         <div class="mask">
+                              <!-- <div class="info"><i class="search"> </i> Show More</div> -->
+                              <div class="info"><a href="/home/{{ $data->id }}" style=" color: #fff; "><i class="search"> </i> Open</a></div>
+                              <ul class="mask_img">
+                              	<!-- <li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li> -->
+                              	<!-- <li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li> -->
+                              	<div class="clearfix"> </div>
+                              </ul>
+                           </div>
+                        </div> 
+                        <!-- <i class="home"></i> -->
+            				<div class="inner_wrap" style=" height: 137px; ">
+            				 	<h3>{{ $data->name }}</h3>
+            				 	<ul class="star1">
+            				 	  <h4 class="green">{{ $data->description }}</h4>
+            				 	  <!-- <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li> -->
+            				 	</ul>
+            				</div>
+         			   </div>
+         			</div>
+                  <?php
+                     $counter++;
+                  ?>
+               @endforeach
+      			
+      			<div class="clearfix"> </div>
+      		</div>
+      	
+   		  
    		  </div>
    	  </div>
    </div>
    <div class="footer">
-   	<div class="container">
-   	 <div class="footer_top">
-   	   <h3>Subscribe to our newsletter</h3>
-   	   <form>
-		<span>
-			<i><img src="{{ asset('images/mail.png') }}" alt=""></i>
-		    <input type="text" value="Enter your email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your email';}">
-		    <label class="btn1 btn2 btn-2 btn-2g"> <input name="submit" type="submit" id="submit" value="Subscribe"> </label>
-		    <div class="clearfix"> </div>
-		</span>			 	    
-	   </form>
-	  </div>
-	  <div class="footer_grids">
-	     <div class="footer-grid">
-			<h4>Ipsum Quis</h4>
-			<ul class="list1">
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="#">Mirum est</a></li>
-				<li><a href="#">Placerat facer</a></li>
-				<li><a href="#">Claritatem</a></li>
-				<li><a href="#">Sollemnes </a></li>
-			</ul>
-		  </div>
-		  <div class="footer-grid">
-			<h4>Quis Ipsum</h4>
-			<ul class="list1">
-				<li><a href="#">Placerat facer</a></li>
-				<li><a href="#">Claritatem</a></li>
-				<li><a href="#">Sollemnes </a></li>
-				<li><a href="#">Claritas</a></li>
-				<li><a href="#">Mirum est</a></li>
-			</ul>
-		  </div>
-		  <div class="footer-grid last_grid">
-			<h4>Follow Us</h4>
-			<ul class="footer_social wow fadeInLeft" data-wow-delay="0.4s">
-			  <li><a href=""> <i class="fb"> </i> </a></li>
-			  <li><a href=""><i class="tw"> </i> </a></li>
-			  <li><a href=""><i class="google"> </i> </a></li>
-			  <li><a href=""><i class="u_tube"> </i> </a></li>
-		 	</ul>
-		 	<div class="copy wow fadeInRight" data-wow-delay="0.4s">
-              <p> &copy; 2016 Hotel Deluxe. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-	        </div>
-		  </div>
-		  <div class="clearfix"> </div>
-	   </div>
+   	<div class="container">	 
+   	   <div class="footer_grids">
+   	      <div class="footer-grid">
+      			<h4>Ipsum Quis</h4>
+      			<ul class="list1">
+      				<li><a href="contact.html">Contact</a></li>
+      				<li><a href="#">Mirum est</a></li>
+      				<li><a href="#">Placerat facer</a></li>
+      				<li><a href="#">Claritatem</a></li>
+      				<li><a href="#">Sollemnes </a></li>
+      			</ul>
+   		   </div>
+   		   <div class="footer-grid">
+      			<h4>Quis Ipsum</h4>
+      			<ul class="list1">
+      				<li><a href="#">Placerat facer</a></li>
+      				<li><a href="#">Claritatem</a></li>
+      				<li><a href="#">Sollemnes </a></li>
+      				<li><a href="#">Claritas</a></li>
+      				<li><a href="#">Mirum est</a></li>
+      			</ul>
+   		   </div>
+   		   <div class="footer-grid last_grid">
+      			<h4>Follow Us</h4>
+      			<ul class="footer_social wow fadeInLeft" data-wow-delay="0.4s">
+      			  <li><a href=""> <i class="fb"> </i> </a></li>
+      			  <li><a href=""><i class="tw"> </i> </a></li>
+      			  <li><a href=""><i class="google"> </i> </a></li>
+      			  <li><a href=""><i class="u_tube"> </i> </a></li>
+      		 	</ul>
+      		 	<div class="copy wow fadeInRight" data-wow-delay="0.4s">
+                    <p> &copy; 2016 Testing. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+   	        </div>
+   		   </div>
+   		   <div class="clearfix"> </div>
+   	   </div>
       </div>
    </div>
 </body>
