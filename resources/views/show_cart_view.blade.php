@@ -71,7 +71,7 @@
     <?php
 	}else{
 		?>
-		<h2>Cart is empty</h2>
+		<h5>Cart is empty</h5>
 		<?php
 	}
 		?>
