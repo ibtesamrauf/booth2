@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
             [ 'name' => 'America', ],
             [ 'name' => 'Canada', ]
         ]);
+ 
     }
 }
