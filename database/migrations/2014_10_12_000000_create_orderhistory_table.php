@@ -21,6 +21,7 @@ class CreateOrderhistoryTable extends Migration
                 $table->string('email');
                 $table->string('phone_number');
                 $table->string('address');
+                $table->integer('product_id');
                 $table->timestamps();
             });
         }

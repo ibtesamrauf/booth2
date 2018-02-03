@@ -53,26 +53,27 @@ Route::get('disable_booth_after_paypal', function () {
 		$temp = explode(",,", $products_ids_to_disable);
 		$temp = array_filter($temp);
 		$temp = array_values($temp);
+		if(!empty($_GET['sess_val'])){
+			$session_values_of_user = $_GET['sess_val'];
+			$temp2 = explode("--", $session_values_of_user);
+			$temp2 = array_filter($temp2);
+			$temp2 = array_values($temp2);
+		}
+
+		foreach ($temp as $key => $value) {
+			Products::where('id', $value)->update(['status' => 0]);
+			Order_history::create([
+		            'first_name'            => $temp2[0],
+		            'last_name'             => $temp2[1],
+		            'email'                 => $temp2[2],
+		            'phone_number'          => $temp2[3],
+		            'address'               => $temp2[4],
+		            'product_id'            => $value,
+		        ]);
+		}
 	}
 
-	foreach ($temp as $key => $value) {
-		Products::where('id', $value)->update(['status' => 0]);
-	}
-
-	if(!empty($_GET['sess_val'])){
-		$session_values_of_user = $_GET['sess_val'];
-		$temp2 = explode("--", $session_values_of_user);
-		$temp2 = array_filter($temp2);
-		$temp2 = array_values($temp2);
-	}
 	// vv($temp2);
-	Order_history::create([
-            'first_name'            => $temp2[0],
-            'last_name'             => $temp2[1],
-            'email'                 => $temp2[2],
-            'phone_number'          => $temp2[3],
-            'address'               => $temp2[4],
-        ]);
 	// Cart::instance('shopping')->destroy();
     // Cart::instance('shopping')->add('192ao1ss', 'Product new', 1, 10.00);
     Cart::instance('shopping')->destroy();
