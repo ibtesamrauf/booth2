@@ -12,7 +12,7 @@
             @if (Auth::guest())
     
             @else
-                <li class="nav-item active">
+                <!-- <li class="nav-item active">
                     <a class="nav-link">
                         {{ Auth::user()->name }} &nbsp <span class="glyphicon glyphicon-arrow-right"></span>
                     </a>
@@ -22,12 +22,25 @@
                     <i class="fa fa-btn fa-sign-out"></i>Logout &nbsp &nbsp &nbsp &nbsp 
                   </a>
                 </li>
+                <li class="dropdown">
+                </li> -->
+
+                <li class="dropdown" style="padding-top: 14px;">
+                  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle" style="color:  aliceblue;">
+                      {{ Auth::user()->name }} 
+                      <span class=""></span>
+                  </a> 
+                  <ul role="menu" class="dropdown-menu">
+                    <li>
+                      <a href="/order_history_show">Orders History</a>
+                    </li> 
+                    <li>
+                      <a href="{{ url('/logout') }}">Logout</a>
+                    </li>
+                  </ul>
+                </li>&nbsp
             @endif
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
+            
             <!-- <li class="nav-item active">
               <a class="nav-link" href="#">About</a>
             </li> -->
