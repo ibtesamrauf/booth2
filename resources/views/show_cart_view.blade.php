@@ -66,7 +66,8 @@
 				<td></td>
 			</tr>
 		</table>
-		<a href="/conform_order" class="btn btn-success">Continue</a>
+		<!-- <a href="/conform_order" class="btn btn-success">Continue</a> -->
+		<a href="/order_history" class="btn btn-success">Continue</a>
 
     <?php
 	}else{
