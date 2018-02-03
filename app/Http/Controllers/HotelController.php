@@ -67,9 +67,9 @@ class HotelController extends Controller
         if(Input::hasFile('file')){
             echo 'Uploaded';
             $file = Input::file('file');
-            $file->move('uploads', $file->getClientOriginalName());
+            $file->move('uploads', time().$file->getClientOriginalName());
             echo '';
-            $image_name = $file->getClientOriginalName();
+            $image_name = time().$file->getClientOriginalName();
         }
 
         Hotel::create([
