@@ -17,5 +17,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'password' => bcrypt('secret123'),
         ]);
+
+        DB::table('country')->insert([
+            [ 'name' => 'America', ],
+            [ 'name' => 'Canada', ]
+        ]);
     }
 }
