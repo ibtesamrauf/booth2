@@ -12,6 +12,7 @@ use Cart;
 // use Session;
 use App\Country; 
 use App\Order_history;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -191,10 +192,15 @@ class HomeController extends Controller
     
     public function order_history_show()
     {   
-        $perPage = 15;  
-        $order_history = Order_history::with('products_details')->orderBy('created_at','DESC')->paginate($perPage);
-        // vv($order_history->products_details->one_hotel());
-        return view('order_history_show' , compact('order_history'));
+        if (Auth::guest()){
+            return redirect('login');
+        }else{
+            $this->middleware('auth');
+            $perPage = 15;  
+            $order_history = Order_history::with('products_details')->orderBy('created_at','DESC')->paginate($perPage);
+            // vv($order_history->products_details->one_hotel());
+            return view('order_history_show' , compact('order_history'));
+        }
     }
 
 
