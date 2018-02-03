@@ -90,3 +90,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/order_history', 'HomeController@order_history');
 Route::post('/order_history_post', 'HomeController@order_history_post');
+Route::get('/order_history_show', 'HomeController@order_history_show');

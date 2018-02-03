@@ -189,5 +189,12 @@ class HomeController extends Controller
         return redirect('conform_order');
     }
     
+    public function order_history_show()
+    {   
+        $perPage = 15;  
+        $order_history = Order_history::orderBy('created_at','DESC')->paginate($perPage);
+        return view('order_history_show' , compact('order_history'));
+    }
+
 
 }
