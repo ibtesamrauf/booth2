@@ -86,8 +86,15 @@ Route::get('/test', 'HomeController@test');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    // return view('welcome');
+    return redirect('/');
+});
 
+Route::get('/admin', function () {
+    // return view('welcome');
+    return redirect('/login');
+});
 
 Route::get('/order_history', 'HomeController@order_history');
 Route::post('/order_history_post', 'HomeController@order_history_post');

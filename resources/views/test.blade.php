@@ -29,6 +29,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script>
         new WOW().init();
         </script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
         <div class="header">
@@ -46,6 +49,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <ul class="nav" id="nav">
                         <li class="active"><a href="/">Home</a></li>
                         <li><a href="/show_cart_view">Cart</a></li>
+                        @if (Auth::guest())
+    
+                        @else
+                            <li class="dropdown" >
+                              <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
+                                  {{ Auth::user()->name }} 
+                                  <span class=""></span>
+                              </a> 
+                              <ul role="menu" class="dropdown-menu">
+                                <li>
+                                  <a href="/order_history_show">Orders History</a>
+                                </li> 
+                                <li>
+                                  <a href="{{ url('/logout') }}">Logout</a>
+                                </li>
+                              </ul>
+                            </li>&nbsp
+                        @endif
                         <!-- <li><a href="news.html">News</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="404.html">Blog</a></li> -->
