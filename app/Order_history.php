@@ -29,9 +29,9 @@ class Order_history extends Model
  
     protected $fillable = ['first_name','last_name','email','phone_number','address','product_id'];
     
-    // public function Country_name(){
-    //     return $this->hasOne('App\Country' , 'id' , 'country_id');
-    // }
+    public function products_details(){
+        return $this->hasOne('App\Products' , 'id' , 'product_id');
+    }
     
     // public function HotspotInfo(){
     //     return $this->hasMany('App\Hot_spot_info');

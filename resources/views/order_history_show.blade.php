@@ -23,6 +23,9 @@
                                         <th>Email</th>
                                         <th>Phone Number</th>
                                         <th>Address</th>
+                                        <th>Hotel</th>
+                                        <th>Product</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,7 +36,10 @@
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->phone_number }}</td>
                                         <td>{{ $item->address }}</td>
-                                        <td>
+                                        <td>{!! \App\Hotel::findOrFail($item->products_details->hotel_id)->name; !!}</td>
+                                        <td>{{ $item->products_details->title }}</td>
+                                        <td>{{ $item->products_details->price }}</td>
+                                        <!-- <td>
                                             <a href="{{ url('/hotel/' . $item->id) }}" title="View User"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/hotel/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([
@@ -48,7 +54,7 @@
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
-                                        </td>
+                                        </td> -->
                                     </tr>
                                 @endforeach
                                 </tbody>
