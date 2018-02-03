@@ -11,7 +11,7 @@
             {{ session('status') }}
         </div>
     @endif
-	
+
 	<div class="row">
         <div class="col-lg-4 col-sm-3 portfolio-item">
             <div class="card h-100 overlay11">
@@ -66,7 +66,7 @@
 							<?php
 								}
 							?> 
-						 	<input type="hidden" name="return" value="{{ env('APP_URL') }}/disable_booth_after_paypal?ids={{$products_ids_to_disable}}">
+						 	<input type="hidden" name="return" value="{{ env('APP_URL') }}/disable_booth_after_paypal?ids={{$products_ids_to_disable}}&sess_val={{$session_values_of_user}}">
 							<!-- PayPal Logo -->
 							<!-- <table border="0" cellpadding="10" cellspacing="0" align="center">
 								<tr>

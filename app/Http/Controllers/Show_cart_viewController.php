@@ -153,14 +153,24 @@ class Show_cart_viewController extends Controller
 
     public function conform_order()
     {
-        // vv("destory".$id);
-        // $item = Cart::instance('shopping')->get($id);
-        // if(!empty($item)){
-        //     Cart::instance('shopping')->remove($id);
-        // }
-        // Session::flash('flash_message', 'User deleted!');
+        // vv(session()->all());
+        $session_values_of_user = "";
 
-        return view('conform_order');
+        $value = session('first_name');
+        $value1 = session('last_name');
+        $value2 = session('email');
+        $value3 = session('phone_number');
+        $value4 = session('address');
+        // v($value);
+        // v($value3);
+        // vv($value4);
+        $session_values_of_user = session('first_name')."--".
+                                    session('last_name')."--".
+                                    session('email')."--".
+                                    session('phone_number')."--".
+                                    session('address');
+        // v($session_values_of_user);
+        return view('conform_order', compact('session_values_of_user'));
         // ->with('status', 'Item Deleted Successfully!');
     }
     

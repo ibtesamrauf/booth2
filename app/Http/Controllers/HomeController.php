@@ -11,6 +11,7 @@ use App\Hotel;
 use Cart;
 // use Session;
 use App\Country; 
+use App\Order_history;
 
 class HomeController extends Controller
 {
@@ -155,5 +156,38 @@ class HomeController extends Controller
     {
         return view('paypal');
     }
+
+    public function order_history()
+    {
+        return view('order_history');
+    }
+
+    public function order_history_post(Request $request)
+    {
+        $this->validate($request, [
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone_number' => 'required',
+            'address' => 'required',
+        ]);
+
+        // Order_history::create([
+        //     'first_name'            => $request->first_name,
+        //     'last_name'             => $request->last_name,
+        //     'email'                 => $request->email,
+        //     'phone_number'          => $request->phone_number,
+        //     'address'               => $request->address,
+        // ]);
+    
+        session(['first_name'   => $request->first_name]);
+        session(['last_name'    => $request->last_name]);
+        session(['email'        => $request->email]);
+        session(['phone_number' => $request->phone_number]);
+        session(['address'      => $request->address]);
+    
+        return redirect('conform_order');
+    }
+    
 
 }
