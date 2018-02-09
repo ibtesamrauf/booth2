@@ -71,7 +71,7 @@ class Show_cart_viewController extends Controller
      */
     public function show($id)
     {
-        vv("show");
+        // vv("show");
         // $user = Network::findOrFail($id);
         return view('admin.network.show', compact('user'));
     }
@@ -108,7 +108,7 @@ class Show_cart_viewController extends Controller
      */
     public function update($id, Request $request)
     {   
-        vv("update");
+        // vv("update");
 
         Validator::make($request->all(), [
             'cart_product_id'               => 'required',

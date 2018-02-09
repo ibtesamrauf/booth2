@@ -75,7 +75,7 @@ class HomeController extends Controller
         elseif(!empty($request->country_select) && (empty($request->search)))
         {
             $hotel = Hotel::orWhere('country_id' , $request->country_select)->paginate(12);
-                            v('2');
+                            // v('2');
         }
         elseif (!empty($request->search) && (empty($request->country_select))) {
             $hotel = Hotel::where('name' , 'like',  "%$request->search%")
