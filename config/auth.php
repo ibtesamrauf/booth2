@@ -45,6 +45,11 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        //Our new custom driver.
+        'jobseeker' => [
+            'driver' => 'session',
+            'provider' => 'jobseekers',
+        ],
     ],
 
     /*
@@ -68,6 +73,13 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        //Jobseeker user provider
+        'jobseekers' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+            'table'  => 'admins'
+
         ],
 
         // 'users' => [

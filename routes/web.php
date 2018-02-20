@@ -21,7 +21,6 @@ Route::get('/', 'HomeController@test');
 
 Route::resource('hotel', 'HotelController');
 
-Route::get('/paypal', 'HomeController@paypal');
 
 Route::get('/home/{hotel_id}', 'HomeController@index');
 
@@ -99,3 +98,19 @@ Route::get('/admin', function () {
 Route::get('/order_history', 'HomeController@order_history');
 Route::post('/order_history_post', 'HomeController@order_history_post');
 Route::get('/order_history_show', 'HomeController@order_history_show');
+
+
+Route::group(['middleware' => 'jobseeker_guest'], function() {
+
+    Route::get('/jobseeker_register', 'JobseekerAuth\RegisterController@showRegistrationForm');
+    Route::post('/jobseeker_register', 'JobseekerAuth\RegisterController@register');
+    Route::get('jobseeker_login', 'JobseekerAuth\LoginController@showLoginForm');
+    Route::post('jobseeker_login', 'JobseekerAuth\LoginController@login');
+    Route::get("/view-job/{token}", 'Jobseeker\JobseekerController@viewJob');
+});
+
+Route::group(['middleware' => 'jobseeker_auth'], function() {
+	Route::get('/paypal', 'HomeController@paypal');
+
+    Route::get('/jobseeker_logout', 'JobseekerAuth\LoginController@logout');
+});
