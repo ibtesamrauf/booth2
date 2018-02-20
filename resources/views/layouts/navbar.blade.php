@@ -12,21 +12,8 @@
             @if (Auth::guest())
     
             @else
-                <!-- <li class="nav-item active">
-                    <a class="nav-link">
-                        {{ Auth::user()->name }} &nbsp <span class="glyphicon glyphicon-arrow-right"></span>
-                    </a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ url('/logout') }}">
-                    <i class="fa fa-btn fa-sign-out"></i>Logout &nbsp &nbsp &nbsp &nbsp 
-                  </a>
-                </li>
-                <li class="dropdown">
-                </li> -->
-
                 <li class="dropdown" style="padding-top: 14px;">
-                  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle" style="color:  aliceblue;">
+                  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle" style="color: aliceblue;">
                       {{ Auth::user()->name }} 
                       <span class=""></span>
                   </a> 
@@ -39,6 +26,47 @@
                     </li>
                   </ul>
                 </li>&nbsp
+            @endif
+
+            <?php 
+              if(Auth::guest()){
+                if (Auth::guard('jobseeker')->check()) { }else{
+            ?>
+                  <li class="nav-item active" >
+                      <a class="nav-link" href="/jobseeker_login">Login</a>
+                  </li>&nbsp
+                  <li class="nav-item active">
+                      <a class="nav-link" href="/jobseeker_register">Register</a>
+                  </li>
+            <?php
+                }
+              }
+            ?>
+            @if (Auth::guest())
+            <?php if (Auth::guard('jobseeker')->check()) { ?>
+
+                <li class="dropdown" style="padding-top: 14px;">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: aliceblue;">
+                        {{ auth()->guard('jobseeker')->user()->name }}
+                        <span class=""></span>
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <!-- <li>
+                            <a href="/viewprofile_marketer">View Profile</a>
+                        </li> -->
+                        <li>
+                            <a href="{{ url('jobseeker_logout') }}">
+                                Logout
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            <?php } else { ?>
+                <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
+            <?php } ?>
+            @else
+            
             @endif
             
             <!-- <li class="nav-item active">

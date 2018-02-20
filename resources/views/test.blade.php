@@ -67,6 +67,53 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                               </ul>
                             </li>&nbsp
                         @endif
+
+                        <?php 
+                          if(Auth::guest()){
+                            if (Auth::guard('jobseeker')->check()) { }else{
+                        ?>
+                              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Login</a>
+                                  <ul class="dropdown-menu">
+                                      <li><a href="/jobseeker_login">Login</a></li>
+                                  </ul>
+                              </li>
+
+                              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Register</a>
+                                  <ul class="dropdown-menu">
+                                      <li><a href="/jobseeker_register">Register</a></li>
+                                  </ul>
+                              </li>
+                        <?php
+                            }
+                          }
+                        ?>
+                        @if (Auth::guest())
+                        <?php if (Auth::guard('jobseeker')->check()) { ?>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ auth()->guard('jobseeker')->user()->name }}
+                                    <!-- <span class="caret"></span> -->
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <!-- <li>
+                                        <a href="/viewprofile_marketer">View Profile</a>
+                                    </li> -->
+                                    <li>
+                                        <a href="{{ url('jobseeker_logout') }}">
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <?php } else { ?>
+                            <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
+                        <?php } ?>
+                        @else
+                        
+                        @endif
+
                         <!-- <li><a href="news.html">News</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="404.html">Blog</a></li> -->
