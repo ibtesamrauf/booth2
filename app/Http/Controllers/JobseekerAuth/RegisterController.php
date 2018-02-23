@@ -42,6 +42,8 @@ class RegisterController extends Controller
             'name'    => $request->name,
             'email'         => $request->email,
             'password'      => bcrypt($request->password),
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
         ]);
         
         return back()->withAlert('Register successfully');
@@ -54,6 +56,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'phone_number' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
         ]);
     }
     
