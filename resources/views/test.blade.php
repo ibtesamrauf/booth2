@@ -60,7 +60,19 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                               <ul role="menu" class="dropdown-menu">
                                 <li>
                                   <a href="/order_history_show">Orders History</a>
+                                </li>
+                                <li>
+                                  <a href="/hotel">Hotel</a>
                                 </li> 
+                                <br>
+                                <li>
+                                  <a href="/booth">Booth</a>
+                                </li>
+                                <br>
+                                <li>
+                                  <a href="/event">Events</a>
+                                </li>  
+                                <br>                                
                                 <li>
                                   <a href="{{ url('/logout') }}">Logout</a>
                                 </li>
@@ -72,17 +84,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                           if(Auth::guest()){
                             if (Auth::guard('jobseeker')->check()) { }else{
                         ?>
-                              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Login</a>
-                                  <ul class="dropdown-menu">
-                                      <li><a href="/jobseeker_login">Login</a></li>
-                                  </ul>
-                              </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" href="/jobseeker_login">Login</a>
+                                </li>
 
-                              <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Register</a>
-                                  <ul class="dropdown-menu">
-                                      <li><a href="/jobseeker_register">Register</a></li>
-                                  </ul>
-                              </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" href="/jobseeker_register">Register</a>
+                                </li>
                         <?php
                             }
                           }

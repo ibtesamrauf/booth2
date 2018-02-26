@@ -45,6 +45,10 @@ Route::resource('network', 'ProductController');
 
 Route::resource('booth', 'ProductController');
 
+Route::resource('event', 'ProductController');
+
+
+
 Route::get('disable_booth_after_paypal', function () {
 	$temp = "";	
 	if(!empty($_GET['ids'])){
@@ -69,6 +73,24 @@ Route::get('disable_booth_after_paypal', function () {
 		            'address'               => $temp2[4],
 		            'product_id'            => $value,
 		        ]);
+			$method = 'POST';
+	        $path = '/jobseeker_register';
+	        $user = User::create([
+			    'name' => $temp2[0].$temp2[1],
+        		'email' => $temp2[2],
+        		'phone_number' => $temp2[3],
+        		'address' => $temp2[4],
+        		'password' => 'user123',
+			]);
+	     //    $data = array(
+      //   		'name' => $temp2[0].$temp2[1],
+      //   		'email' => $temp2[2],
+      //   		'phone_number' => $temp2[3],
+      //   		'address' => $temp2[4],
+      //   		'password' => 'user123',
+      //   		'password-confirm' => 'user123',
+    		// );
+			// Request::create($path, $method, $data);
 		}
 	}
 
