@@ -45,7 +45,7 @@ Route::resource('network', 'ProductController');
 
 Route::resource('booth', 'ProductController');
 
-Route::resource('event', 'ProductController');
+Route::resource('event', 'EventController');
 
 
 

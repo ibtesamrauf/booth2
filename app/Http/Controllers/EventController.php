@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Products;
+use App\Event;
 use App\Hotel;
 use Illuminate\Http\Request;
 use Session;
@@ -23,16 +24,14 @@ class EventController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        ini_set('upload_max_filesize', '50M');
-        ini_set('post_max_size', '50M');
     }
 
     public function index(Request $request)
     {
         $perPage = 15;    
-        $device = Products::with('one_hotel')->orderBy('id','DESC')->paginate($perPage);
+        $device = Event::with('one_hotel')->orderBy('id','DESC')->paginate($perPage);
         // vv($device);
-        return view('Product.index', compact('device'));
+        return view('event.index', compact('device'));
     }
 
     /**
@@ -43,8 +42,9 @@ class EventController extends Controller
     public function create()
     {
         $hotel = Hotel::pluck('name','id');
+        // $user = Event::findOrFail($id);
         // vv($hotel);
-        return view('Product.create', compact('hotel'));
+        return view('event.create', compact('hotel'));
     }
 
     /**
@@ -56,33 +56,21 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $image_name = "";
         $this->validate($request, [
-            'title'         => 'required',
-            'description'   => 'required',
-            'price'         => 'required',
-            'select_hotel'  => 'required',
+            'time'              => 'required',
+            'hotel_id'          => 'required',
+            'start_date'        => 'required',
+            'end_date'          => 'required',
         ]);
 
-        // if(Input::hasFile('file')){
-        //     echo 'Uploaded';
-        //     $file = Input::file('file');
-        //     $file->move('uploads', $file->getClientOriginalName());
-        //     echo '';
-        //     $image_name = $file->getClientOriginalName();
-        // }
-
-        Products::create([
-            // 'user_id'       => \Auth::user()->id,
-            'hotel_id'      => $request->select_hotel,
-            'status'        => 1,
-            'title'         => $request->title,
-            'description'   => $request->description,
-            'price'         => $request->price,
-            'image'         => $image_name,
+        Event::create([
+            'time'              => $request->time,
+            'hotel_id'          => $request->hotel_id,
+            'start_date'        => $request->start_date,
+            'end_date'          => $request->end_date,
         ]);
        
-        return redirect('network')->with('status', 'Product Added!');
+        return redirect('event')->with('status', 'Event Added!');
     }
 
     /**
@@ -94,8 +82,8 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $user = Products::with('one_hotel')->findOrFail($id);
-        return view('Product.show', compact('user'));
+        $user = Event::with('one_hotel')->findOrFail($id);
+        return view('event.show', compact('user'));
     }
 
     /**
@@ -108,8 +96,8 @@ class EventController extends Controller
     public function edit($id)
     {
         $hotel = Hotel::pluck('name','id');
-        $user = Products::with('one_hotel')->findOrFail($id);
-        return view('Product.edit', compact('user' , 'hotel'));
+        $user = Event::findOrFail($id);
+        return view('event.edit', compact('user' , 'hotel'));
     }
 
     /**
@@ -123,19 +111,18 @@ class EventController extends Controller
     public function update($id, Request $request)
     {   
         $this->validate($request, [
-            'title'         => 'required',
-            'description'   => 'required',
-            'price'         => 'required',
-            'select_hotel'  => 'required',
+            'time'          => 'required',
+            'hotel_id'            => 'required',
+            'start_date'             => 'required',
+            'end_date'       => 'required',
         ]);
-        $requestData = $request->all();
-        unset($requestData['select_hotel']);
-        $requestData['hotel_id'] = $request->select_hotel;
 
-        $user = Products::findOrFail($id);
+        $requestData = $request->all();
+
+        $user = Event::findOrFail($id);
         $user->update($requestData);
 
-        return redirect('network')->with('status', 'Product Updated!');
+        return redirect('event')->with('status', 'Event Updated!');
     }
 
     /**
@@ -147,7 +134,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        Products::destroy($id);
-        return redirect('network')->with('status', 'Product deleted!');
+        Event::destroy($id);
+        return redirect('event')->with('status', 'Event deleted!');
     }
 }
