@@ -137,4 +137,11 @@ class EventController extends Controller
         Event::destroy($id);
         return redirect('event')->with('status', 'Event deleted!');
     }
+
+    public function reset_all_booth($hotel_id)
+    {
+        // vv($hotel_id);
+        Products::where('hotel_id' , $hotel_id)->update(['status' => 1]);
+        return redirect('event')->with('status', 'All Booth Activated From this hotel!');
+    }
 }

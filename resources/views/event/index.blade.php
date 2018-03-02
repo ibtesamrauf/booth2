@@ -81,6 +81,7 @@
                                         <td>{{ $item->end_date }}</td>
 
                                         <td>
+                                            <a href="/reset_all_booth/{{ $item->one_hotel->id }}" title="View User"><button class="btn btn-warning"><i class="fa fa-eye" aria-hidden="true"></i> Activate all Booth</button></a>
                                             <a href="{{ url('/event/' . $item->id) }}" title="View User"><button class="btn btn-info btn-xs"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/event/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                             {!! Form::open([

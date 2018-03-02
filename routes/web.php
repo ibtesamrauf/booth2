@@ -47,6 +47,7 @@ Route::resource('booth', 'ProductController');
 
 Route::resource('event', 'EventController');
 
+Route::get('reset_all_booth/{hotel_id}', 'EventController@reset_all_booth');
 
 
 Route::get('disable_booth_after_paypal', function () {
