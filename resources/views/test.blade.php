@@ -217,43 +217,93 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         $temp = 2;
                         ?>
                         @foreach ($hotel as $key => $data)
-                        <div class="col-md-3 index-grids" style="max-height: 320px;">
-                            <?php
-                            if ($counter >= 4) {
-                                echo "<br>";
-                                $table_number_Counter = $table_number_Counter * $temp;
-                                $temp += 1;
-                            }
+                            <?php 
+                            if(!empty($data->Events))
+                            {
                             ?>
-                            <div class="grid1">
-                                <div class="view view-first">
-                                    <div class="index_img">
-                                        <img src="{{ asset('uploads/'.$data->image) }}" style="/* max-height: 173px; */height: 173px;width: 255px;" class="img-responsive" alt=""/>
+                                <div class="col-md-3 index-grids" style="max-height: 320px;">
+                                    <?php
+                                    if ($counter >= 4) {
+                                        echo "<br>";
+                                        $table_number_Counter = $table_number_Counter * $temp;
+                                        $temp += 1;
+                                    }
+                                    
+                                    ?>
+                                    <div class="grid1">
+                                        <div class="view view-first">
+                                            <div class="index_img">
+                                                <img src="{{ asset('uploads/'.$data->image) }}" style="/* max-height: 173px; */height: 173px;width: 255px;" class="img-responsive" alt=""/>
+                                            </div>
+                                            <!-- <div class="sale">$2.980</div> -->
+                                            <div class="mask">
+                                 <!-- <div class="info"><i class="search"> </i> Show More</div> -->
+                                                <div class="info">
+                                                    <a href="/home/{{ $data->id }}" style=" color: #fff; ">
+                                                        <i class="search"> </i> 
+                                                        Open
+                                                    </a>
+                                                </div>
+                                                <ul class="mask_img">
+                                                  <!-- <li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li> -->
+                                                  <!-- <li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li> -->
+                                                    <div class="clearfix"> </div>
+                                                </ul>
+                                            </div>
+                                        </div> 
+                                        <!-- <i class="home"></i> -->
+                                        <div class="inner_wrap" style=" height: 137px; ">
+                                            <h3>{{ $data->name }}</h3>
+                                            <ul class="star1">
+                                                <h4 class="green">{{ $data->description }}</h4>
+                                                <!-- <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li> -->
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <!-- <div class="sale">$2.980</div> -->
-                                    <div class="mask">
-                         <!-- <div class="info"><i class="search"> </i> Show More</div> -->
-                                        <div class="info"><a href="/home/{{ $data->id }}" style=" color: #fff; "><i class="search"> </i> Open</a></div>
-                                        <ul class="mask_img">
-                                          <!-- <li class="star"><img src="{{ asset('images/star.png') }}" alt=""/></li> -->
-                                          <!-- <li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li> -->
-                                            <div class="clearfix"> </div>
-                                        </ul>
-                                    </div>
-                                </div> 
-                                <!-- <i class="home"></i> -->
-                                <div class="inner_wrap" style=" height: 137px; ">
-                                    <h3>{{ $data->name }}</h3>
-                                    <ul class="star1">
-                                        <h4 class="green">{{ $data->description }}</h4>
-                                        <!-- <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li> -->
-                                    </ul>
                                 </div>
-                            </div>
-                        </div>
-                        <?php
-                        $counter++;
-                        ?>
+                            <?php
+                            }else{
+                            ?>
+                                <div class="col-md-3 index-grids" style="max-height: 320px;">
+                                    <?php
+                                    if ($counter >= 4) {
+                                        echo "<br>";
+                                        $table_number_Counter = $table_number_Counter * $temp;
+                                        $temp += 1;
+                                    }
+                                    
+                                    ?>
+                                    <div class="grid1">
+                                        <div class="view view-first">
+                                            <div class="index_img">
+                                                <img src="{{ asset('uploads/'.$data->image) }}" style="/* max-height: 173px; */height: 173px;width: 255px;" class="img-responsive" alt=""/>
+                                                <div class="centered">No Event</div>
+                                            </div>
+                                            <!-- <div class="sale">$2.980</div> -->
+                                            <div class="mask">
+                                 <!-- <div class="info"><i class="search"> </i> Show More</div> -->
+                                                <div class="info"><i class="search"> </i> Booked</div>
+                                                <ul class="mask_img">
+                                                  <li class="star"></li>
+                                                  <!-- <li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li> -->
+                                                    <div class="clearfix"> </div>
+                                                </ul>
+                                            </div>
+                                        </div> 
+                                        <!-- <i class="home"></i> -->
+                                        <div class="inner_wrap" style=" height: 137px; ">
+                                            <h3>{{ $data->name }}</h3>
+                                            <ul class="star1">
+                                                <h4 class="green">{{ $data->description }}</h4>
+                                                <!-- <li><a href="#"> <img src="{{ asset('images/star1.png') }}" alt="">(236)</a></li> -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            $counter++;
+                            ?>
                         @endforeach
 
                         <div class="clearfix"> </div>

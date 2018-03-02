@@ -32,6 +32,10 @@ class Hotel extends Model
     public function Country_name(){
         return $this->hasOne('App\Country' , 'id' , 'country_id');
     }
+
+    public function Events(){
+        return $this->hasOne('App\Event' , 'hotel_id' , 'id');
+    }
     
     // public function HotspotInfo(){
     //     return $this->hasMany('App\Hot_spot_info');

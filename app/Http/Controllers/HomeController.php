@@ -65,7 +65,8 @@ class HomeController extends Controller
         }
 
         if(!empty($request->search) && !empty($request->country_select) && !empty($request->hotel_select)){
-            $hotel = Hotel::where('name' , 'like',  "%$request->search%")
+            $hotel = Hotel::with('Events')
+                            ->where('name' , 'like',  "%$request->search%")
                             ->orWhere('description', 'like',  "%$request->search%")
                             ->orWhere('country_id' , $request->country_select)
                             ->orWhere('id', $request->hotel_select)
@@ -74,24 +75,25 @@ class HomeController extends Controller
         }
         elseif(!empty($request->country_select) && (empty($request->search)))
         {
-            $hotel = Hotel::orWhere('country_id' , $request->country_select)->paginate(12);
+            $hotel = Hotel::with('Events')->orWhere('country_id' , $request->country_select)->paginate(12);
                             // v('2');
         }
         elseif (!empty($request->search) && (empty($request->country_select))) {
-            $hotel = Hotel::where('name' , 'like',  "%$request->search%")
+            $hotel = Hotel::with('Events')
+                        ->where('name' , 'like',  "%$request->search%")
                         ->orWhere('description', 'like',  "%$request->search%")
                         ->paginate(12);
                             // v('3');
         }
         elseif(!empty($request->hotel_select) && (empty($request->search)) && (empty($request->country_select))){
             // v("4");
-            $hotel = Hotel::where('id', $request->hotel_select)->paginate(12);
+            $hotel = Hotel::with('Events')->where('id', $request->hotel_select)->paginate(12);
         }
         else{
                             // v('5');
-            $hotel = Hotel::paginate(12);
+            $hotel = Hotel::with('Events')->paginate(12);
         }
-                
+        // vv($hotel);
         // return view('hotel' , compact('hotel'));
         $country = Country::get();
         $hotel_lists = Hotel::get();
