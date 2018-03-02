@@ -282,7 +282,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <!-- <div class="sale">$2.980</div> -->
                                             <div class="mask">
                                  <!-- <div class="info"><i class="search"> </i> Show More</div> -->
-                                                <div class="info"><i class="search"> </i> Booked</div>
+                                                <div class="info"><i class="search"> </i>No Event</div>
                                                 <ul class="mask_img">
                                                   <li class="star"></li>
                                                   <!-- <li class="set"><img src="{{ asset('images/set.png') }}" alt=""/></li> -->
