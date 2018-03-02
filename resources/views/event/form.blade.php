@@ -1,5 +1,5 @@
 <div class="form-group {{ $errors->has('time') ? 'has-error' : ''}}">
-    {!! Form::label('time', 'Title', ['class' => 'col-md-4 control-label']) !!}
+    {!! Form::label('time', 'Time', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         {!! Form::input('dateTime-local','time', Carbon\Carbon::parse($user->time)->format('Y-m-d')
         ."T".Carbon\Carbon::parse($user->time)->format('H:i'), ['class' => 'form-control']) !!}
