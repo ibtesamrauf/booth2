@@ -81,7 +81,7 @@ class HomeController extends Controller
         elseif (!empty($request->search) && (empty($request->country_select))) {
             $hotel = Hotel::with('Events')
                         ->where('name' , 'like',  "%$request->search%")
-                        ->orWhere('description', 'like',  "%$request->search%")
+                        // ->orWhere('description', 'like',  "%$request->search%")
                         ->paginate(12);
                             // v('3');
         }

@@ -48,7 +48,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </a>
                     <ul class="nav" id="nav">
                         <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/show_cart_view">Cart</a></li>
+                        <li><a href="/show_cart_view">Cart <?php if(!empty(Cart::instance('shopping')->count())){ echo "(".Cart::instance('shopping')->count()." Items)"; } ?></a></li>
                         @if (Auth::guest())
     
                         @else
@@ -177,7 +177,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <h1>What are you looking for?</h1>
                 <form action="/" method="GET">
                     <div class="dropdown-buttons">   
-                        <div class="dropdown-button">                    
+                        <div class="dropdown-button" style="display:none">                    
                             <select id="country_select" name="country_select" class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
                                 <option selected>All Country</option>  
                                 @foreach($country as $coun)
@@ -189,14 +189,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <select name="hotel_select" id="hotel_select" class="dropdown" tabindex="9" data-settings='{"wrapperClass":"flat"}'>
                                 <option selected>All Hotel</option>  
                                 @foreach($hotel_lists as $h_list)
-                                    <option value="{{ $h_list->id }}">{{ $h_list->name }}</option> 
+                                    <option value="{{ $h_list->id }}" 
+                                    <?php if(app('request')->input('hotel_select') == $h_list->id){ echo "selected='selected'"; } ?> 
+                                    >{{ $h_list->name }}</option> 
                                 @endforeach
                             </select>
                         </div>
                     </div>  
-                    <input type="text" name="search" id="search" placeholder="Enter Hotel name" onfocus="this.value = '';" onblur="if (this.value == '') {
-                                            this.value = 'Keyword, name, date, ...';
-                                        }">
+                    <input type="text" name="search" id="search" placeholder="Enter Hotel name" value="{{ app('request')->input('search') }}">
                     <div class="contact_btn">
                         <label class="btn1 btn-2 btn-2g"><input name="submit" type="submit" id="submit" value="Search"></label>
                     </div>
