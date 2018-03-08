@@ -20,7 +20,16 @@
                   <ul role="menu" class="dropdown-menu">
                     <li>
                       <a href="/order_history_show">Orders History</a>
+                    </li>
+                    <li>
+                      <a href="/hotel">Hotel</a>
                     </li> 
+                    <li>
+                      <a href="/booth">Booth</a>
+                    </li>
+                    <li>
+                      <a href="/event">Events</a>
+                    </li>     
                     <li>
                       <a href="{{ url('/logout') }}">Logout</a>
                     </li>

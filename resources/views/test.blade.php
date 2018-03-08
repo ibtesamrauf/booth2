@@ -39,7 +39,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <div class="logo">
                     <!-- <a href="index.html"> -->
 <!-- <img src="{{ asset('images/logo.png') }}" alt=""/> -->
-                    <h2>{{ config('app.name', 'Laravel') }}</h2> 
+                    <h3>{{ config('app.name', 'Laravel') }}</h3> 
                     </a>
                 </div>
                 <div class="menu">
@@ -84,9 +84,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                           if(Auth::guest()){
                             if (Auth::guard('jobseeker')->check()) { }else{
                         ?>
-                                <li class="dropdown">
+                                <!-- <li class="dropdown">
                                     <a class="dropdown-toggle" href="/jobseeker_login">Login</a>
-                                </li>
+                                </li> -->
 
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" href="/jobseeker_register">Register</a>
@@ -151,15 +151,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="col-sm-4 header_right">
                 <div id="loginContainer"><a href="#" id="loginButton"><img src="{{ asset('images/login.png') }}"><span>Login</span></a>
                     <div id="loginBox">                
-                        <form id="loginForm">
+                        <form method="POST" action="{{ url('jobseeker_login') }}" id="loginForm">
+                            {{ csrf_field() }}
                             <fieldset id="body">
                                 <fieldset>
                                     <label for="email">Email Address</label>
-                                    <input type="text" name="email" id="email">
+                                    <input type="email" name="email" id="email">
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
                                 </fieldset>
                                 <fieldset>
                                     <label for="password">Password</label>
                                     <input type="password" name="password" id="password">
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
                                 </fieldset>
                                 <input type="submit" id="login" value="Sign in">
                                 <label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
